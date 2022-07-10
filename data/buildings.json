@@ -1,0 +1,74 @@
+{
+    "buildings": [
+        {
+            "id": 1,
+            "name": "Patoune",
+            "description": "Une petite patoune de chat qui clique à votre place",
+            "costBase": 1,
+            "costFactor": 1
+        },
+        {
+            "id": 2,
+            "name": "Souris",
+            "description": "Attirer d'autres chats avec un appât de choix",
+            "costBase": 1,
+            "costFactor": 1
+        },
+        {
+            "id": 3,
+            "name": "Herbe à chat",
+            "description": "Tous les moyens sont bons (A consommer avec modération)",
+            "costBase": 1,
+            "costFactor": 1
+        },
+        {
+            "id": 4,
+            "name": "Vache à lait",
+            "description": "Pour gagner du temps, vous achetez vos propres vaches pour la production de lait",
+            "costBase": 1,
+            "costFactor": 1
+        },
+        {
+            "id": 5,
+            "name": "Laser",
+            "description": "L'avancée scientifique parfaite pour attirer quelques minoux supplémentaires",
+            "costBase": 1,
+            "costFactor": 1
+        },
+        {
+            "id": 6,
+            "name": "Autel de pharaon",
+            "description": "La population se met à vénérer les chats tels les anciens égyptiens",
+            "costBase": 1,
+            "costFactor": 1
+        },
+        {
+            "id": 7,
+            "name": "Lolcat",
+            "description": "Noyez Internet avec des memes de chats. Ca marche à tous les coups",
+            "costBase": 1,
+            "costFactor": 1
+        },
+        {
+            "id": 8,
+            "name": "Campagne Anti-Chien",
+            "description": "Un chien de moins = Un chat de plus",
+            "costBase": 1,
+            "costFactor": 1
+        },
+        {
+            "id": 9,
+            "name": "Robot-Chat",
+            "description": "Pour suivre la demande croissante, vous fabriquez des robots poilus en espérant que personne ne le remarque",
+            "costBase": 1,
+            "costFactor": 1
+        },
+        {
+            "id": 10,
+            "name": "Machine à cloner",
+            "description": "Les brebis, c'est surfait",
+            "costBase": 1,
+            "costFactor": 1
+        }
+    ]
+}
