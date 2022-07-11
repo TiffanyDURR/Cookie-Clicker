@@ -1,26 +1,21 @@
-let score = 3000;
-let compteurBonusPattoune = 0;
-let pattouneBuilding = 0;
-let costPattoune = 100 * 1.15 ** (compteurBonusPattoune);
+let profile = new Profile("Player", 5000);
 const affichageScore = document.querySelector(".affichageScore");
 const chatACliquer1 = document.querySelector(".chatACliquer1");
 const clicPlusUnImage = document.querySelector(".clicPlusUnImage");
 const superPattouneBonus = document.querySelector(".superPattouneBonus");
 const pattouneHeader = document.querySelector(".pattouneHeader > div");
 
-
 // AU CLIC 
 
 function clicPlusUn () {
 chatACliquer1.addEventListener("click", () => {
-score++;
+profile.cats++;
 animationPlusUn();
 });
 };
 
-
 function animationPlusUn () {
-  clicPlusUnImage.classList.add("clicAnimPlusUn");
+clicPlusUnImage.classList.add("clicAnimPlusUn");
 setTimeout(function () {
   clicPlusUnImage.classList.remove("clicAnimPlusUn");
 }, 150);
@@ -30,41 +25,38 @@ setTimeout(function () {
 
 function superPattouneFunction () {
   superPattouneBonus.addEventListener("click", () => {
-    compteurBonusPattoune++;
-    costPattoune = 100 * 1.15 ** (compteurBonusPattoune);
+    profile.buildings[0]++;
+    var costPattoune = getBuildingCost(0, profile.buildings[0]);
     costPattoune = Math.ceil(costPattoune);
-    score = score - costPattoune;
-    score = Math.ceil(score);
+    profile.cats = profile.cats - costPattoune;
+    profile.cats = Math.ceil(profile.cats);
     setInterval(superPattouneCalc, 10000);
   })
   }
 
   function superPattouneCalc () {
-    score = score + (1 * compteurBonusPattoune / compteurBonusPattoune);
+    profile.cats = profile.cats + (1 * profile.buildings[0] / profile.buildings[0]);
   }
 
-
-setInterval(() => {
-  let costPattouneArrondi = costPattoune * 1.15;
+function gameLoop() {
+  let costPattouneArrondi = getBuildingCost(0, profile.buildings[0]) * 1.15;
   costPattouneArrondi = Math.ceil(costPattouneArrondi);
-  if (compteurBonusPattoune == 0) {
+  if (profile.buildings[0] == 0) {
     pattouneHeader.style.display = "none";
-  } if (compteurBonusPattoune >= 1) {
+  } if (profile.buildings[0] >= 1) {
     pattouneHeader.style.display = "block";
   }
-  pattouneHeader.innerHTML = `Nombre de pattounes achetées <span>${compteurBonusPattoune}</span> prochain cout de pattoune ${costPattouneArrondi}
+  pattouneHeader.innerHTML = `Nombre de pattounes achetées <span>${profile.buildings[0]}</span> prochain cout de pattoune ${costPattouneArrondi}
   <br/>
-  Ce bonus rapporte ${compteurBonusPattoune / 10} chat(s) toutes les secondes !`;
-  affichageScore.textContent = `${score}`;
-    if (score <= costPattouneArrondi) {
+  Ce bonus rapporte ${profile.buildings[0] / 10} chat(s) toutes les secondes !`;
+  affichageScore.textContent = `${profile.cats}`;
+  if (profile.cats <= costPattouneArrondi) {
       superPattouneBonus.style.display = "none";
     } else {
       superPattouneBonus.style.display = "block";
     }
-}, 1)
+}
 
-
+initialize();
 clicPlusUn();
 superPattouneFunction();
-
-
