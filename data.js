@@ -5,10 +5,10 @@ buildingsData = await getJSON('./data/buildings.json');
 setInterval(gameLoop, 1) // Set interval ici pour qu'il attende le JSON 
 }
 
-function getBuildingCost(index, existingCount) {
+function getBuildingCost(index) {
     var building = buildingsData[index];
 
-    return building.costBase * 1.15 ** existingCount;
+    return building.costBase * 1.15 ** profile.buildings[index];
 }
 
 class Profile

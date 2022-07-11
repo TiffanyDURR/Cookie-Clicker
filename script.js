@@ -26,7 +26,7 @@ setTimeout(function () {
 function superPattouneFunction () {
   superPattouneBonus.addEventListener("click", () => {
     profile.buildings[0]++;
-    var costPattoune = getBuildingCost(0, profile.buildings[0]);
+    var costPattoune = getBuildingCost(0);
     costPattoune = Math.ceil(costPattoune);
     profile.cats = profile.cats - costPattoune;
     profile.cats = Math.ceil(profile.cats);
@@ -39,7 +39,7 @@ function superPattouneFunction () {
   }
 
 function gameLoop() {
-  let costPattouneArrondi = getBuildingCost(0, profile.buildings[0]) * 1.15;
+  let costPattouneArrondi = getBuildingCost(0) * 1.15;
   costPattouneArrondi = Math.ceil(costPattouneArrondi);
   if (profile.buildings[0] == 0) {
     pattouneHeader.style.display = "none";
