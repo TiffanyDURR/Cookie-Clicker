@@ -54,11 +54,15 @@ function buildingDelegate(building) {
 
 function buildingClick(building) {
   console.log('Building click' + building.id)
-  profile.buildings[building.id - 1]++
   let cost = getBuildingCost(building.id - 1)
   cost = Math.ceil(cost)
+
+  if (cost <= profile.cats)
+  {
+  profile.buildings[building.id - 1]++
   profile.cats = profile.cats - cost
   profile.cats = Math.ceil(profile.cats)
+}
 }
 
 function superPattouneCalc() {
