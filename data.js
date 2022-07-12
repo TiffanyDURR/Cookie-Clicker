@@ -40,7 +40,7 @@ class Profile {
   }
 
   loadData() {
-    if (localStorage.length < 0) {
+    if (localStorage.length > 0) {
       this.name = localStorage.getItem('name')
       this.cats = parseInt(localStorage.getItem('cats'))
       this.buildings = JSON.parse(localStorage.getItem('buildings'))
