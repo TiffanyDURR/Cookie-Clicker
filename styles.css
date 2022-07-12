@@ -204,7 +204,7 @@ h3 {
     height: 102px;
     margin-left: auto;
     margin-right: auto;
-    background: url(assets/lolcat.png);
+    background: url(assets/lolcat-bg.png);
 }
 
 .building8 {
@@ -212,7 +212,23 @@ h3 {
     height: 102px;
     margin-left: auto;
     margin-right: auto;
-    background: url(assets/campagne.png);
+    background: url(assets/campagne-bg.png);
+}
+
+.building9 {
+    width: 266px;
+    height: 102px;
+    margin-left: auto;
+    margin-right: auto;
+    background: url(assets/campagne-bg.png);
+}
+
+.building10 {
+    width: 266px;
+    height: 102px;
+    margin-left: auto;
+    margin-right: auto;
+    background: url(assets/campagne-bg.png);
 }
 
 .prix {
@@ -232,9 +248,4 @@ h3 {
     display: flex;
 margin-left: 90px;
 margin-top: 10px;
-}
-
-.gris {
-    opacity: 0;
-    z-index: -3000;
 }
