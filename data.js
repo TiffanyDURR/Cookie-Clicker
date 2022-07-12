@@ -1,16 +1,20 @@
-var buildingsData;
+let buildingsData;
 
 async function initialize() {
     buildingsData = await getJSON('./data/buildings.json');
 
-    for (var i = 0; i < buildingsData.length;i++)
+    for (let i = 0; i < buildingsData.length ; i++)
     {
         spawnBuilding(buildingsData[i]);
     }
 
-    setInterval(gameLoop, 1) // Set interval ici pour qu'il attende le JSON 
-}
+    for (let i = 0; i < buildingsData.length ; i++)
+    {
+        buildingDelegate(buildingsData[i]);
+    }
 
+    setInterval(gameLoop, 1)
+}
 
 function getBuildingCost(index) {
     var building = buildingsData[index];

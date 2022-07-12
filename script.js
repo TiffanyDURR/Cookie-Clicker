@@ -44,17 +44,23 @@ function spawnBuilding(building) {
                 <img class="${building.id}Bonus" src="./assets/${building.asset}">
             </div>
         `
+}
 
-    var panel = document.querySelector('.building' + building.id);
+function buildingDelegate(building){
+ 
+  let test = `.building${building.id}`
+  let panel = document.querySelector(test)
 
-    panel.addEventListener("click", () => {
-    alert("Test");
-    profile.buildings[building.id - 1]++;
-    var cost = getBuildingCost(building.id - 1);
-    cost = Math.ceil(cost);
-    profile.cats = profile.cats - cost;
-    profile.cats = Math.ceil(profile.cats);
- })
+  panel.addEventListener("click", () => buildingClick(building))
+}
+
+function buildingClick(building) {
+  alert('Test' + building.id)
+  profile.buildings[building.id - 1]++
+  let cost = getBuildingCost(building.id - 1)
+  cost = Math.ceil(cost)
+  profile.cats = profile.cats - cost
+  profile.cats = Math.ceil(profile.cats)
 }
 
 function superPattouneCalc() {
