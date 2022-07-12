@@ -15,7 +15,7 @@
     "description": "Attirer d'autres chats avec un appât de choix",
     "costBase": 300,
     "costFactor": 1,
-    "catPerSecond": 1,
+    "catPerSecond": 5,
     "asset": "souris.png",
     "asset-bg": "souris-bg.png"
   },
@@ -25,7 +25,7 @@
     "description": "Tous les moyens sont bons (A consommer avec modération)",
     "costBase": 1,
     "costFactor": 1,
-    "catPerSecond": 1,
+    "catPerSecond": 10,
     "asset": "herbeachats.png",
     "asset-bg": "herbeachats-bg.png"
   },

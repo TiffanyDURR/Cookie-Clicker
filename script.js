@@ -55,7 +55,7 @@ function buildingDelegate(building){
 }
 
 function buildingClick(building) {
-  alert('Test' + building.id)
+  console.log('Building click' + building.id)
   profile.buildings[building.id - 1]++
   let cost = getBuildingCost(building.id - 1)
   cost = Math.ceil(cost)
@@ -64,11 +64,18 @@ function buildingClick(building) {
 }
 
 function superPattouneCalc() {
-  profile.cats =
-    profile.cats + (1 * profile.buildings[0]) / profile.buildings[0]
+  profile.cats = profile.cats + (1 * profile.buildings[0]) / profile.buildings[0]
 }
 
 function gameLoop() {
+  
+  for (let i = 0; i < profile.buildings.length;i++)
+  {
+    profile.cats += buildingsData[i].catPerSecond * profile.buildings[i];
+  }
+}
+
+function checkLoop() {
   let costArrondi = getBuildingCost(0) * 1.15
   costArrondi = Math.ceil(costArrondi)
   if (profile.buildings[0] == 0) {

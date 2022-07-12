@@ -13,7 +13,8 @@ async function initialize() {
         buildingDelegate(buildingsData[i]);
     }
 
-    setInterval(gameLoop, 1)
+    setInterval(gameLoop, 1000)
+    setInterval(checkLoop, 1);
 }
 
 function getBuildingCost(index) {
