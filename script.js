@@ -99,5 +99,4 @@ function metaLoop(){
 
 initialize();
 clicPlusUn();
-profile.clearData();
 profile.loadData();
