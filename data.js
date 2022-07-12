@@ -46,20 +46,6 @@ class Profile {
       this.buildings = JSON.parse(localStorage.getItem('buildings'))
       this.startDateTime = Date.parse(localStorage.getItem('start'))
       this.lastSaveDateTime = Date.parse(localStorage.getItem('lastSave'))
-
-      if (!this.name) {
-        this.name = 'Player'
-      }
-
-      if (!localStorage.getItem('cats')) {
-        this.cats = 5000
-      }
-
-      if (!localStorage.getItem('buildings')) {
-        console.log("creating new buildings");
-
-        this.buildings = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      }
     }
 
     console.log(this.name)
