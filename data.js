@@ -53,4 +53,8 @@ class Profile {
     console.log(this.startDateTime)
     console.log(this.buildings)
   }
+
+  clearData(){
+    localStorage.clear();
+  }
 }
