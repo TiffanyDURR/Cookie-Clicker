@@ -151,7 +151,7 @@ h3 {
     cursor: pointer;
 }
 
-.superPattouneBonusContainer {
+.building1 {
     width: 266px;
     height: 102px;
     margin-left: auto;
@@ -159,7 +159,7 @@ h3 {
     background: url(assets/pattoune-bg.png);
 }
 
-.superSourisBonusContainer {
+.building2 {
     width: 266px;
     height: 102px;
     margin-left: auto;
@@ -167,7 +167,7 @@ h3 {
     background: url(assets/souris-bg.png);
 }
 
-.superCatnipBonusContainer {
+.building3 {
     width: 266px;
     height: 102px;
     margin-left: auto;
@@ -175,7 +175,7 @@ h3 {
     background: url(assets/herbeachats-bg.png);
 }
 
-.superMilkBonusContainer {
+.building4 {
     width: 266px;
     height: 102px;
     margin-left: auto;
@@ -183,7 +183,7 @@ h3 {
     background: url(assets/milk-bg.png);
 }
 
-.superLaserBonusContainer {
+.building5 {
     width: 266px;
     height: 102px;
     margin-left: auto;
@@ -191,7 +191,7 @@ h3 {
     background: url(assets/laser-bg.png);
 }
 
-.superAutelBonusContainer {
+.building6 {
     width: 266px;
     height: 102px;
     margin-left: auto;
@@ -199,7 +199,7 @@ h3 {
     background: url(assets/autel-bg.png);
 }
 
-.superLolcatBonusContainer {
+.building7 {
     width: 266px;
     height: 102px;
     margin-left: auto;
@@ -207,7 +207,7 @@ h3 {
     background: url(assets/lolcat.png);
 }
 
-.superNodogsBonusContainer {
+.building8 {
     width: 266px;
     height: 102px;
     margin-left: auto;
@@ -232,4 +232,9 @@ h3 {
     display: flex;
 margin-left: 90px;
 margin-top: 10px;
+}
+
+.gris {
+    opacity: 0;
+    z-index: -3000;
 }
