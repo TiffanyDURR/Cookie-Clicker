@@ -2,7 +2,6 @@ let profile = new Profile('Player', 5000)
 const affichageScore = document.querySelector('.affichageScore')
 const chatACliquer1 = document.querySelector('.chatACliquer1')
 const clicPlusUnImage = document.querySelector('.clicPlusUnImage')
-const superPattouneBonus = document.querySelector('.superPattouneBonus')
 const pattouneHeader = document.querySelector('.pattouneHeader > div')
 const affichageCostPattoune = document.querySelector('.costPattoune')
 const buildingsPanel = document.querySelector('.buildings-panel')
@@ -40,18 +39,17 @@ function spawnBuilding(building) {
   buildingsPanel.innerHTML += `
          <div class="building${building.id}"> 
                 <span class="titre-bonus">${building.name}</span>
-                <div class="${building.id} prix">${building.costBase}</div>
-                <img class="${building.id}Bonus" src="./assets/${building.asset}">
+                <div class="buildingPrix${building.id} prix">${building.costBase}</div>
+                <img class="Bonus${building.id}" src="./assets/${building.asset}">
             </div>
         `
 }
 
-function buildingDelegate(building){
- 
+function buildingDelegate(building) {
   let test = `.building${building.id}`
   let panel = document.querySelector(test)
 
-  panel.addEventListener("click", () => buildingClick(building))
+  panel.addEventListener('click', () => buildingClick(building))
 }
 
 function buildingClick(building) {
@@ -64,37 +62,43 @@ function buildingClick(building) {
 }
 
 function superPattouneCalc() {
-  profile.cats = profile.cats + (1 * profile.buildings[0]) / profile.buildings[0]
+  profile.cats =
+    profile.cats + (1 * profile.buildings[0]) / profile.buildings[0]
 }
 
 function gameLoop() {
-  
-  for (let i = 0; i < profile.buildings.length;i++)
-  {
-    profile.cats += buildingsData[i].catPerSecond * profile.buildings[i];
+  for (let i = 0; i < profile.buildings.length; i++) {
+    profile.cats += buildingsData[i].catPerSecond * profile.buildings[i]
   }
 }
 
 function checkLoop() {
-  let costArrondi = getBuildingCost(0) * 1.15
-  costArrondi = Math.ceil(costArrondi)
-  if (profile.buildings[0] == 0) {
-    pattouneHeader.style.display = 'none'
-  }
-  if (profile.buildings[0] >= 1) {
-    pattouneHeader.style.display = 'block'
-  }
-  //affichageCostPattoune.innerHTML = `${costPattouneArrondi}`;
-  pattouneHeader.innerHTML = `Nombre de pattounes achetées <span>${
-    profile.buildings[0]
-  }</span>
+  for (let i = 0; i < buildingsData.length; i++) 
+  {
+    let costArrondi = getBuildingCost(i) * 1.15
+
+    costArrondi = Math.ceil(costArrondi)
+
+    if (profile.buildings[0] == 0) { // A enlever quand chaque building aura son texte au milieu
+      pattouneHeader.style.display = 'none'
+    }
+
+    if (profile.buildings[0] >= 1) {
+      pattouneHeader.style.display = 'block'
+    }
+    
+    var currentPanel = document.querySelector(`.buildingPrix${buildingsData[i].id}`);
+
+    currentPanel.innerHTML = `${costArrondi}`;
+    pattouneHeader.innerHTML = `Nombre de pattounes achetées <span>${profile.buildings[0]}</span>
   <br/>
   Ce bonus rapporte ${profile.buildings[0] / 10} chat(s) toutes les secondes !`
-  affichageScore.textContent = `${profile.cats}`
-  if (profile.cats <= costArrondi) {
-    //superPattouneBonus.style.display = "none";
-  } else {
-    // superPattouneBonus.style.display = "block";
+    affichageScore.textContent = `${profile.cats}`
+    if (profile.cats <= costArrondi) {
+      currentPanel.style.display = "none";
+    } else {
+       currentPanel.style.display = "block";
+    }
   }
 }
 
