@@ -86,8 +86,8 @@
     "costBase":  5100000000,
     "costFactor": 1,
     "catPerSecond": 260000,
-    "asset": "pattoune.png",
-    "asset-bg": "pattoune-bg.png"
+    "asset": "robot.png",
+    "asset-bg": "robot-bg.png"
   },
   {
     "id": 10,
@@ -96,7 +96,7 @@
     "costBase": 75000000000,
     "costFactor": 1,
     "catPerSecond": 1600000,
-    "asset": "pattoune.png",
-    "asset-bg": "pattoune-bg.png"
+    "asset": "clonage.png",
+    "asset-bg": "conage-bg.png"
   }
 ]
