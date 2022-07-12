@@ -42,7 +42,7 @@ function spawnBuilding(building){
          <div class="${building.name}Container"> 
                 <span class="titre-bonus">${building.name}</span>
                 <div class="${building.name} prix">${building.costBase}</div>
-                <img class="${building.name}Bonus" src="${building.asset}">
+                <img class="${building.name}Bonus" src="./assets/${building.asset}">
             </div>
         `
 }
