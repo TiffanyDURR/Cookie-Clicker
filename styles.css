@@ -6,6 +6,8 @@ body {
     margin-top: 60px;
     margin-bottom: 60px;
     background: url(wallpaper.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 * {
