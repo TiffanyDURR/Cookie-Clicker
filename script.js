@@ -88,6 +88,7 @@ function checkLoop() {
     }
     
     var currentPanel = document.querySelector(`.buildingPrix${buildingsData[i].id}`);
+    let bonus = document.querySelector(`.Bonus${buildingsData[i].id}`);
 
     currentPanel.innerHTML = `${costArrondi}`;
     pattouneHeader.innerHTML = `Nombre de pattounes achetées <span>${profile.buildings[0]}</span>
@@ -95,9 +96,9 @@ function checkLoop() {
   Ce bonus rapporte ${profile.buildings[0] / 10} chat(s) toutes les secondes !`
     affichageScore.textContent = `${profile.cats}`
     if (profile.cats <= costArrondi) {
-      currentPanel.style.display = "none";
+      bonus.style.display = "none";
     } else {
-       currentPanel.style.display = "block";
+       bonus.style.display = "block";
     }
   }
 }
