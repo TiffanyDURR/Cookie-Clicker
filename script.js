@@ -94,7 +94,7 @@ function checkLoop() {
 }
 
 function metaLoop(){
-  profile.saveData();
+ profile.saveData();
 }
 
 initialize();

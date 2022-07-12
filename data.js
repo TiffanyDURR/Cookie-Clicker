@@ -40,14 +40,14 @@ class Profile {
   }
 
   loadData() {
-    if (localStorage['name']) {
+    if (localStorage.length < 0) {
       this.name = localStorage.getItem('name')
       this.cats = parseInt(localStorage.getItem('cats'))
       this.buildings = JSON.parse(localStorage.getItem('buildings'))
       this.startDateTime = Date.parse(localStorage.getItem('start'))
       this.lastSaveDateTime = Date.parse(localStorage.getItem('lastSave'))
     }
-    
+
     console.log(this.name)
     console.log(this.cats)
     console.log(this.startDateTime)
