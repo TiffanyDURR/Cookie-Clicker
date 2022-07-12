@@ -54,7 +54,10 @@ function buildingClick(building) {
 
 function gameLoop() {
   for (let i = 0; i < profile.buildings.length; i++) {
-    profile.cats += buildingsData[i].catPerSecond * profile.buildings[i]
+    profile.cats += buildingsData[i].catPerSecond * profile.buildings[i];
+
+    console.log(profile.cats);
+    console.log("add : " + buildingsData[i].catPerSecond * profile.buildings[i]);
   }
 }
 
@@ -80,6 +83,7 @@ function checkLoop() {
     pattouneHeader.innerHTML = `Nombre de pattounes achetées <span>${profile.buildings[0]}</span>
   <br/>
   Ce bonus rapporte ${profile.buildings[0] / 10} chat(s) toutes les secondes !`
+   // affichageScore.textContent = `${nFormatter(profile.cats,3)}`
     affichageScore.textContent = `${nFormatter(profile.cats,3)}`
     if (profile.cats <= costArrondi) {
       bonus.style.display = "none";
@@ -89,6 +93,10 @@ function checkLoop() {
   }
 }
 
-initialize()
-clicPlusUn()
-//superPattouneFunction();
+function metaLoop(){
+  profile.saveData();
+}
+
+initialize();
+clicPlusUn();
+profile.loadData();
