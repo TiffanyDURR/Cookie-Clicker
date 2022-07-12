@@ -1,4 +1,4 @@
-let profile = new Profile('Player', 5000)
+let profile = new Profile('Player', 3000)
 const affichageScore = document.querySelector('.affichageScore')
 const chatACliquer1 = document.querySelector('.chatACliquer1')
 const clicPlusUnImage = document.querySelector('.clicPlusUnImage')
@@ -99,4 +99,5 @@ function metaLoop(){
 
 initialize();
 clicPlusUn();
+profile.clearData();
 profile.loadData();
