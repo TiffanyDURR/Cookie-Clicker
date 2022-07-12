@@ -1,26 +1,26 @@
-let profile = new Profile("Player", 5000);
-const affichageScore = document.querySelector(".affichageScore");
-const chatACliquer1 = document.querySelector(".chatACliquer1");
-const clicPlusUnImage = document.querySelector(".clicPlusUnImage");
-const superPattouneBonus = document.querySelector(".superPattouneBonus");
-const pattouneHeader = document.querySelector(".pattouneHeader > div");
-const affichageCostPattoune = document.querySelector(".costPattoune");
-const buildingsPanel = document.querySelector(".buildings-panel");
+let profile = new Profile('Player', 5000)
+const affichageScore = document.querySelector('.affichageScore')
+const chatACliquer1 = document.querySelector('.chatACliquer1')
+const clicPlusUnImage = document.querySelector('.clicPlusUnImage')
+const superPattouneBonus = document.querySelector('.superPattouneBonus')
+const pattouneHeader = document.querySelector('.pattouneHeader > div')
+const affichageCostPattoune = document.querySelector('.costPattoune')
+const buildingsPanel = document.querySelector('.buildings-panel')
 
-// AU CLIC 
+// AU CLIC
 
-function clicPlusUn () {
-chatACliquer1.addEventListener("click", () => {
-profile.cats++;
-animationPlusUn();
-});
-};
+function clicPlusUn() {
+  chatACliquer1.addEventListener('click', () => {
+    profile.cats++
+    animationPlusUn()
+  })
+}
 
-function animationPlusUn () {
-clicPlusUnImage.classList.add("clicAnimPlusUn");
-setTimeout(function () {
-  clicPlusUnImage.classList.remove("clicAnimPlusUn");
-}, 150);
+function animationPlusUn() {
+  clicPlusUnImage.classList.add('clicAnimPlusUn')
+  setTimeout(function () {
+    clicPlusUnImage.classList.remove('clicAnimPlusUn')
+  }, 150)
 }
 
 // SUPER PATTOUNE
@@ -36,42 +36,55 @@ setTimeout(function () {
   })
   }
 */
-function spawnBuilding(building){
-
-        buildingsPanel.innerHTML += `
-         <div class="${building.name}Container"> 
+function spawnBuilding(building) {
+  buildingsPanel.innerHTML += `
+         <div class="building${building.id}"> 
                 <span class="titre-bonus">${building.name}</span>
-                <div class="${building.name} prix">${building.costBase}</div>
-                <img class="${building.name}Bonus" src="./assets/${building.asset}">
+                <div class="${building.id} prix">${building.costBase}</div>
+                <img class="${building.id}Bonus" src="./assets/${building.asset}">
             </div>
         `
+
+    var panel = document.querySelector('.building' + building.id);
+
+    panel.addEventListener("click", () => {
+    alert("Test");
+    profile.buildings[building.id - 1]++;
+    var cost = getBuildingCost(building.id - 1);
+    cost = Math.ceil(cost);
+    profile.cats = profile.cats - cost;
+    profile.cats = Math.ceil(profile.cats);
+ })
 }
 
-  function superPattouneCalc () {
-    profile.cats = profile.cats + (1 * profile.buildings[0] / profile.buildings[0]);
-  }
-
+function superPattouneCalc() {
+  profile.cats =
+    profile.cats + (1 * profile.buildings[0]) / profile.buildings[0]
+}
 
 function gameLoop() {
-  let costPattouneArrondi = getBuildingCost(0) * 1.15;
-  costPattouneArrondi = Math.ceil(costPattouneArrondi);
+  let costArrondi = getBuildingCost(0) * 1.15
+  costArrondi = Math.ceil(costArrondi)
   if (profile.buildings[0] == 0) {
-    pattouneHeader.style.display = "none";
-  } if (profile.buildings[0] >= 1) {
-    pattouneHeader.style.display = "block";
+    pattouneHeader.style.display = 'none'
+  }
+  if (profile.buildings[0] >= 1) {
+    pattouneHeader.style.display = 'block'
   }
   //affichageCostPattoune.innerHTML = `${costPattouneArrondi}`;
-  pattouneHeader.innerHTML = `Nombre de pattounes achetées <span>${profile.buildings[0]}</span>
+  pattouneHeader.innerHTML = `Nombre de pattounes achetées <span>${
+    profile.buildings[0]
+  }</span>
   <br/>
-  Ce bonus rapporte ${profile.buildings[0] / 10} chat(s) toutes les secondes !`;
-  affichageScore.textContent = `${profile.cats}`;
-  if (profile.cats <= costPattouneArrondi) {
-      //superPattouneBonus.style.display = "none";
-    } else {
-     // superPattouneBonus.style.display = "block";
-    }
+  Ce bonus rapporte ${profile.buildings[0] / 10} chat(s) toutes les secondes !`
+  affichageScore.textContent = `${profile.cats}`
+  if (profile.cats <= costArrondi) {
+    //superPattouneBonus.style.display = "none";
+  } else {
+    // superPattouneBonus.style.display = "block";
+  }
 }
 
-initialize();
-clicPlusUn();
+initialize()
+clicPlusUn()
 //superPattouneFunction();
