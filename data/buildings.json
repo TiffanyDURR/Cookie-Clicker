@@ -5,7 +5,8 @@
     "description": "Une petite pattoune de chat qui clique à votre place",
     "costBase": 100,
     "costFactor": 1,
-    "catPerSecond": 1
+    "catPerSecond": 1,
+    "asset": "right-001.png"
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "description": "Attirer d'autres chats avec un appât de choix",
     "costBase": 1,
     "costFactor": 1,
-    "catPerSecond": 1
+    "catPerSecond": 1,
+    "asset": "right-001.png"
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "description": "Tous les moyens sont bons (A consommer avec modération)",
     "costBase": 1,
     "costFactor": 1,
-    "catPerSecond": 1
+    "catPerSecond": 1,
+    "asset": "right-001.png"
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "description": "Pour gagner du temps, vous achetez vos propres vaches pour la production de lait",
     "costBase": 1,
     "costFactor": 1,
-    "catPerSecond": 1
+    "catPerSecond": 1,
+    "asset": "right-001.png"
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "description": "L'avancée scientifique parfaite pour attirer quelques minoux supplémentaires",
     "costBase": 1,
     "costFactor": 1,
-    "catPerSecond": 1
+    "catPerSecond": 1,
+    "asset": "right-001.png"
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "description": "La population se met à vénérer les chats tels les anciens égyptiens",
     "costBase": 1,
     "costFactor": 1,
-    "catPerSecond": 1
+    "catPerSecond": 1,
+    "asset": "right-001.png"
   },
   {
     "id": 7,
@@ -53,7 +59,8 @@
     "description": "Noyez Internet avec des memes de chats. Ca marche à tous les coups",
     "costBase": 1,
     "costFactor": 1,
-    "catPerSecond": 1
+    "catPerSecond": 1,
+    "asset": "right-001.png"
   },
   {
     "id": 8,
@@ -61,7 +68,8 @@
     "description": "Un chien de moins = Un chat de plus",
     "costBase": 1,
     "costFactor": 1,
-    "catPerSecond": 1
+    "catPerSecond": 1,
+    "asset": "right-001.png"
   },
   {
     "id": 9,
@@ -69,7 +77,8 @@
     "description": "Pour suivre la demande croissante, vous fabriquez des robots poilus en espérant que personne ne le remarque",
     "costBase": 1,
     "costFactor": 1,
-    "catPerSecond": 1
+    "catPerSecond": 1,
+    "asset": "right-001.png"
   },
   {
     "id": 10,
@@ -77,6 +86,7 @@
     "description": "Les brebis, c'est surfait",
     "costBase": 1,
     "costFactor": 1,
-    "catPerSecond": 1
+    "catPerSecond": 1,
+    "asset": "right-001.png"
   }
 ]

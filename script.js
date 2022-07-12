@@ -5,6 +5,7 @@ const clicPlusUnImage = document.querySelector(".clicPlusUnImage");
 const superPattouneBonus = document.querySelector(".superPattouneBonus");
 const pattouneHeader = document.querySelector(".pattouneHeader > div");
 const affichageCostPattoune = document.querySelector(".costPattoune");
+const buildingsPanel = document.querySelector(".buildings-panel");
 
 // AU CLIC 
 
@@ -24,7 +25,7 @@ setTimeout(function () {
 
 // SUPER PATTOUNE
 
-function superPattouneFunction () {
+/*function superPattouneFunction () {
   superPattouneBonus.addEventListener("click", () => {
     profile.buildings[0]++;
     var costPattoune = getBuildingCost(0);
@@ -34,11 +35,21 @@ function superPattouneFunction () {
     setInterval(superPattouneCalc, 10000);
   })
   }
+*/
+function spawnBuilding(building){
+
+        buildingsPanel.innerHTML += `
+         <div class="${building.name}Container"> 
+                <span class="titre-bonus">${building.name}</span>
+                <div class="${building.name} prix">${building.costBase}</div>
+                <img class="${building.name}Bonus" src="${building.asset}">
+            </div>
+        `
+}
 
   function superPattouneCalc () {
     profile.cats = profile.cats + (1 * profile.buildings[0] / profile.buildings[0]);
   }
-
 
 
 function gameLoop() {
@@ -49,18 +60,18 @@ function gameLoop() {
   } if (profile.buildings[0] >= 1) {
     pattouneHeader.style.display = "block";
   }
-  affichageCostPattoune.innerHTML = `${costPattouneArrondi}`
+  //affichageCostPattoune.innerHTML = `${costPattouneArrondi}`;
   pattouneHeader.innerHTML = `Nombre de pattounes achetées <span>${profile.buildings[0]}</span>
   <br/>
   Ce bonus rapporte ${profile.buildings[0] / 10} chat(s) toutes les secondes !`;
   affichageScore.textContent = `${profile.cats}`;
   if (profile.cats <= costPattouneArrondi) {
-      superPattouneBonus.style.display = "none";
+      //superPattouneBonus.style.display = "none";
     } else {
-      superPattouneBonus.style.display = "block";
+     // superPattouneBonus.style.display = "block";
     }
 }
 
 initialize();
 clicPlusUn();
-superPattouneFunction();
+//superPattouneFunction();
