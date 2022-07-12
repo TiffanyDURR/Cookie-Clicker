@@ -22,19 +22,6 @@ function animationPlusUn() {
   }, 150)
 }
 
-// SUPER PATTOUNE
-
-/*function superPattouneFunction () {
-  superPattouneBonus.addEventListener("click", () => {
-    profile.buildings[0]++;
-    var costPattoune = getBuildingCost(0);
-    costPattoune = Math.ceil(costPattoune);
-    profile.cats = profile.cats - costPattoune;
-    profile.cats = Math.ceil(profile.cats);
-    setInterval(superPattouneCalc, 10000);
-  })
-  }
-*/
 function spawnBuilding(building) {
   buildingsPanel.innerHTML += `
          <div class="building${building.id}"> 
@@ -63,11 +50,6 @@ function buildingClick(building) {
   profile.cats = profile.cats - cost
   profile.cats = Math.ceil(profile.cats)
 }
-}
-
-function superPattouneCalc() {
-  profile.cats =
-    profile.cats + (1 * profile.buildings[0]) / profile.buildings[0]
 }
 
 function gameLoop() {
