@@ -94,11 +94,11 @@ function checkLoop() {
     var currentPanel = document.querySelector(`.buildingPrix${buildingsData[i].id}`);
     let bonus = document.querySelector(`.Bonus${buildingsData[i].id}`);
 
-    currentPanel.innerHTML = `${costArrondi}`;
+    currentPanel.innerHTML = `${nFormatter(costArrondi,3)}`;
     pattouneHeader.innerHTML = `Nombre de pattounes achetées <span>${profile.buildings[0]}</span>
   <br/>
   Ce bonus rapporte ${profile.buildings[0] / 10} chat(s) toutes les secondes !`
-    affichageScore.textContent = `${profile.cats}`
+    affichageScore.textContent = `${nFormatter(profile.cats,3)}`
     if (profile.cats <= costArrondi) {
       bonus.style.display = "none";
     } else {
