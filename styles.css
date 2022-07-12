@@ -14,21 +14,6 @@ body {
     scroll-behavior: smooth;
 }
 
-.taper-left {
-    position: absolute;
-    display: inline-block;
-    margin-top: -20px;
-    margin-left: -780px;
-    z-index: 1000;
-}
-
-.taper-right {
-    position: absolute;
-    display: inline-block;
-    margin-top: -20px;
-    margin-left: 580px;
-    z-index: 1000; 
-}
 
 h1 {
     padding: 0px;
@@ -42,21 +27,22 @@ h1 {
 
 .app {
     width: 1400px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     display: flex;
     justify-content: center;
-    align-items: center;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 60px;
-    margin-bottom: 60px;
-    background-color: #B6D8F2;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: #e8d5cc;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    height: 500px;
     border-radius: 30px;
 }
 
 .app-aside {
 width: 350px;
+text-align: center;
 }
 
 .app-main {
@@ -66,7 +52,6 @@ width: 700px;
 .app-header {
     height: 19px;
     width: 1400px;
-    background: url(app-header.png);
     position: absolute;
     margin-top: 41px;
     margin-left: 250px;
@@ -78,11 +63,19 @@ width: 700px;
     position: relative;
 }
 
+.affichage {
+    font-family: 'Neucha', cursive;
+    font-weight: normal;
+    font-size: 20px;
+    text-align: center;
+    color: #f8ad9d;
+}
+
 .affichageScore {
-    font-family: 'Chewy', cursive;
+    font-family: 'Neucha', cursive;
     font-weight: normal;
     font-size: 60px;
-    color: #4d86b2;
+    color: #f8ad9d;
 }
 
 .clicPlusUnImage {
@@ -92,6 +85,13 @@ width: 700px;
     margin-top: 12px;
     z-index: 3000;
     opacity: 0;
+}
+
+h3 {
+    font-family: 'Caveat Brush', cursive;
+    font-weight: normal;
+    font-size: 34px;
+    color: #ccaea4;
 }
 
 .clicAnimPlusUn {
@@ -135,24 +135,99 @@ width: 700px;
 }
 
 
+.pattouneHeader {
+    height: 102px;
+}
+
+.pattouneHeaderTitle {
+    
+}
+
+
 .superPattouneBonus {
     display: none;
     cursor: pointer;
 }
 
 .superPattouneBonusContainer {
-    width: 300px;
-    height: 80px;
-    background: url(option-001.jpg);
+    width: 266px;
+    height: 102px;
+    margin-left: auto;
+    margin-right: auto;
+    background: url(right-001-bis.png);
 }
 
-.pattouneHeader {
-    font-family: 'Chewy', cursive;
-    height: 80px;
-    color: #ffffff;
-    padding: 5px;
+.superSourisBonusContainer {
+    width: 266px;
+    height: 102px;
+    margin-left: auto;
+    margin-right: auto;
+    background: url(right-002-bis.png);
 }
 
-.pattouneHeaderTitle {
-    
+.superCatnipBonusContainer {
+    width: 266px;
+    height: 102px;
+    margin-left: auto;
+    margin-right: auto;
+    background: url(right-003-bis.png);
+}
+
+.superMilkBonusContainer {
+    width: 266px;
+    height: 102px;
+    margin-left: auto;
+    margin-right: auto;
+    background: url(right-004-bis.png);
+}
+
+.superLaserBonusContainer {
+    width: 266px;
+    height: 102px;
+    margin-left: auto;
+    margin-right: auto;
+    background: url(right-005-bis.png);
+}
+
+.superAutelBonusContainer {
+    width: 266px;
+    height: 102px;
+    margin-left: auto;
+    margin-right: auto;
+    background: url(right-006-bis.png);
+}
+
+.superLolcatBonusContainer {
+    width: 266px;
+    height: 102px;
+    margin-left: auto;
+    margin-right: auto;
+    background: url(right-007-bis.png);
+}
+
+.superNodogsBonusContainer {
+    width: 266px;
+    height: 102px;
+    margin-left: auto;
+    margin-right: auto;
+    background: url(right-008-bis.png);
+}
+
+.prix {
+    font-family: 'Neucha', cursive;
+    font-size: 26px;
+    color: #b39188;
+    position: absolute;
+    padding-left: 120px;
+    margin-top: 58px;
+}
+
+.titre-bonus {
+    font-family: 'Caveat Brush', cursive;
+    font-size: 20px;
+    color: #b39188;
+    position: absolute;
+    display: flex;
+margin-left: 90px;
+margin-top: 10px;
 }
