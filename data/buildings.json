@@ -13,7 +13,7 @@
     "id": 2,
     "name": "Souris",
     "description": "Attirer d'autres chats avec un appât de choix",
-    "costBase": 1,
+    "costBase": 300,
     "costFactor": 1,
     "catPerSecond": 1,
     "asset": "souris.png",
