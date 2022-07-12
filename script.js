@@ -4,6 +4,7 @@ const chatACliquer1 = document.querySelector(".chatACliquer1");
 const clicPlusUnImage = document.querySelector(".clicPlusUnImage");
 const superPattouneBonus = document.querySelector(".superPattouneBonus");
 const pattouneHeader = document.querySelector(".pattouneHeader > div");
+const affichageCostPattoune = document.querySelector(".costPattoune");
 
 // AU CLIC 
 
@@ -38,6 +39,8 @@ function superPattouneFunction () {
     profile.cats = profile.cats + (1 * profile.buildings[0] / profile.buildings[0]);
   }
 
+
+
 function gameLoop() {
   let costPattouneArrondi = getBuildingCost(0) * 1.15;
   costPattouneArrondi = Math.ceil(costPattouneArrondi);
@@ -46,7 +49,8 @@ function gameLoop() {
   } if (profile.buildings[0] >= 1) {
     pattouneHeader.style.display = "block";
   }
-  pattouneHeader.innerHTML = `Nombre de pattounes achetées <span>${profile.buildings[0]}</span> prochain cout de pattoune ${costPattouneArrondi}
+  affichageCostPattoune.innerHTML = `${costPattouneArrondi}`
+  pattouneHeader.innerHTML = `Nombre de pattounes achetées <span>${profile.buildings[0]}</span>
   <br/>
   Ce bonus rapporte ${profile.buildings[0] / 10} chat(s) toutes les secondes !`;
   affichageScore.textContent = `${profile.cats}`;
