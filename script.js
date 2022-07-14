@@ -5,8 +5,14 @@ const clicPlusUnImage = document.querySelector('.clicPlusUnImage')
 const pattouneHeader = document.querySelector('.pattouneHeader > div')
 const affichageCostPattoune = document.querySelector('.costPattoune')
 const buildingsPanel = document.querySelector('.buildings-panel')
+const mainHeader = document.querySelector(".main-header");
 
+mainHeader.innerHTML = `
+<span>Nombre de chats par seconde</span>
+<p>000</p>`
 // AU CLIC
+
+
 
 function clicPlusUn() {
   chatACliquer1.addEventListener('click', () => {
@@ -22,14 +28,50 @@ function animationPlusUn() {
   }, 150)
 }
 
+
+const mainHeaderContent = document.querySelector(".main-header-content");
+
+
+function affichageMain (building) {
+  let calcBuildingParSeconde = profile.buildings[building.id] * building.catPerSecond;
+  const mainHeaderContent = document.querySelector(".main-header-content");
+
+if(document.querySelector(`.main-building${[building.id]}`) == document.querySelector(`.main-building${[building.id]}`)){
+  mainHeaderContent.innerHTML = `
+  <div class="main-building${building.id} main-building-style"> 
+  <div>
+  Nombre de <b>${building.name}</b> acheté(es) ; <span> ${profile.buildings[building.id]} <i class="fas fa-paw"></i></span>
+    <br/>
+    <p>Ce bonus rapporte ${calcBuildingParSeconde} chat(s) toutes les secondes !</p>
+    </div>`
+} else {
+  mainHeaderContent.innerHTML += `
+<div class="main-building${building.id} main-building-style"> 
+<div>
+Nombre de <b>${building.name}</b> acheté(es) ; <span> ${profile.buildings[building.id]} <i class="fas fa-paw"></i></span>
+  <br/>
+  <p>Ce bonus rapporte ${calcBuildingParSeconde} chat(s) toutes les secondes !</p>
+  </div>`
+}
+}
+
+
 function spawnBuilding(building) {
+  let calcBuildingParSeconde = profile.buildings[building.id] * building.catPerSecond; 
+  let calcBuildingParSecondeNext = calcBuildingParSeconde * 1.15;
+  let calcBuildingParSecondeNextArrondi = Math.ceil(calcBuildingParSecondeNext);
+
+
   buildingsPanel.innerHTML += `
          <div class="building${building.id}"> 
+         <div class="building-hover"><div>${building.description}
+         <br>
+         <span>Rapporte ${calcBuildingParSecondeNextArrondi} chat(s) par seconde.<span></div></div>
                 <span class="titre-bonus">${building.name}</span>
                 <div class="buildingPrix${building.id} prix">${building.costBase}</div>
                 <img class="Bonus${building.id}" src="./assets/${building.asset}">
             </div>
-        `
+        `      
 }
 
 function buildingDelegate(building) {
@@ -80,9 +122,7 @@ function checkLoop() {
     let bonus = document.querySelector(`.Bonus${buildingsData[i].id}`);
 
     currentPanel.innerHTML = `${nFormatter(costArrondi,3)}`;
-    pattouneHeader.innerHTML = `Nombre de pattounes achetées <span>${profile.buildings[0]}</span>
-  <br/>
-  Ce bonus rapporte ${profile.buildings[0] / 10} chat(s) toutes les secondes !`
+    
    // affichageScore.textContent = `${nFormatter(profile.cats,3)}`
     affichageScore.textContent = `${nFormatter(profile.cats,3)}`
     if (profile.cats <= costArrondi) {
@@ -90,6 +130,7 @@ function checkLoop() {
     } else {
        bonus.style.display = "block";
     }
+    affichageMain(buildingsData[i]);
   }
 }
 
@@ -100,3 +141,4 @@ function metaLoop(){
 initialize();
 clicPlusUn();
 profile.loadData();
+

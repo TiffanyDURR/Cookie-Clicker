@@ -137,12 +137,82 @@ h3 {
 }
 
 
-.pattouneHeader {
-    height: 102px;
+.main-building1 {
+    background: url(assets/pattoune-bm.png);
+}
+
+.main-building2 {
+    background: url(assets/souris-bm.png);
+}
+
+.main-building3 {
+    background: url(assets/herbeachats-bm.png);
+}
+
+.main-building4 {
+    background: url(assets/milk-bm.png);
+}
+
+.main-building5 {
+    background: url(assets/laser-bm.png);
+}
+
+.main-building6 {
+    background: url(assets/autel-bm.png);
+}
+
+.main-building7 {
+    background: url(assets/lolcat-bm.png);
+}
+
+.main-building8 {
+    background: url(assets/campagne-bm.png);
+}
+
+.main-building9 {
+    background: url(assets/robot-bm.png);
+}
+
+.main-building10 {
+    background: url(assets/clonage-bm.png);
+}
+
+
+.main-building-style {
+    width: 596px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 26px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding-left: 130px;
+    font-family: 'Neucha', cursive;
+    font-size: 20px;
+    color: #b18f86;
+    height: 100px;
+}
+
+.main-building-style span {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.main-building-style p {
+    padding: 0px;
+    margin: 0px;
+    line-height: 1;
+    font-style: italic;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .pattouneHeaderTitle {
     
+}
+
+.buildings-panel div {
+    cursor: pointer;
 }
 
 
@@ -248,4 +318,93 @@ h3 {
     display: flex;
 margin-left: 90px;
 margin-top: 10px;
+}
+
+.building-hover {
+    width: 321px;
+    height: 203px;
+    background: url(assets/back-hover-building.png);
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    margin-left: -330px;
+    padding-right: 60px;
+    padding-left: 30px;
+    font-family: 'Caveat Brush', cursive;
+font-size: 20px;
+color: #b39188;
+display: none;
+z-index: 3000;
+}
+
+.building-hover span {
+    font-size: 16px;
+    font-family: 'Neucha', cursive;
+}
+
+
+.building1:hover .building-hover {
+	display:flex;
+}
+
+.building2:hover .building-hover {
+	display:flex;
+}
+
+.building3:hover .building-hover {
+	display:flex;
+}
+
+.building4:hover .building-hover {
+	display:flex;
+}
+
+.building5:hover .building-hover {
+	display:flex;
+}
+
+.building6:hover .building-hover {
+	display:flex;
+}
+
+.building7:hover .building-hover {
+	display:flex;
+}
+
+.building8:hover .building-hover {
+	display:flex;
+}
+
+.building9:hover .building-hover {
+	display:flex;
+}
+
+.building10:hover .building-hover {
+	display:flex;
+}
+
+.main-header {
+    margin-left: auto;
+    margin-right: auto;
+    background: url(assets/banner.png);
+    height: 107px;
+    width: 596px;
+    padding-top: 30px;
+    font-family: 'Caveat Brush', cursive;
+    color: #eee3de;
+    font-size: 20px;
+    line-height: 1;
+    text-align: center;
+}
+
+.main-header span, .main-header p {
+    line-height: 1;
+    padding: 0px;
+    margin: 0px;
+    display: block;
+    text-align: center;
+}
+
+.main-header p {
+    font-size: 30px;
 }
