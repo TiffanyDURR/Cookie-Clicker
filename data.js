@@ -12,7 +12,7 @@ async function initialize() {
   }
 
   setInterval(gameLoop, 1000)
-  setInterval(checkLoop, 1)
+  setInterval(checkLoop, 10)
   setInterval(metaLoop, 10000)
 }
 
