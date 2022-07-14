@@ -18,5 +18,5 @@ function nFormatter(num, digits) {
   var item = lookup.slice().reverse().find(function(item) {
     return num >= item.value;
   });
-  return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
+  return item ? (num / item.value).toFixed(num < 1000 ? 0 : digits).replace(rx, "$1") + item.symbol : "0";
 }
