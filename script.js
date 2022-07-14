@@ -1,4 +1,4 @@
-let profile = new Profile('Player', 3000)
+let profile = new Profile('Player', 50000000)
 const affichageScore = document.querySelector('.affichageScore')
 const chatACliquer1 = document.querySelector('.chatACliquer1')
 const clicPlusUnImage = document.querySelector('.clicPlusUnImage')
@@ -58,10 +58,6 @@ Nombre de <b>${buildingData.name}</b> acheté(es) ; <span> ${buildingLevel} <i c
 
 
 function spawnBuilding(building) {
-  let calcBuildingParSeconde = profile.buildings[building.id] * building.catPerSecond; 
-  let calcBuildingParSecondeNext = calcBuildingParSeconde * 1.15;
-  let calcBuildingParSecondeNextArrondi = Math.ceil(calcBuildingParSecondeNext);
-
 
   buildingsPanel.innerHTML += `
          <div class="building${building.id}"> 
@@ -82,7 +78,11 @@ function buildingDelegate(building) {
   panel.addEventListener('click', () => buildingClick(building))
 }
 
+
 function buildingClick(building) {
+  let infosBonus = document.querySelector(`.infosbonus${building.id}`);
+  let calcBuildingParSecondeNext = (profile.buildings[building.id - 1] + 1) * building.catPerSecond;
+
   console.log('Building click' + building.id)
   let cost = getBuildingCost(building.id - 1)
   cost = Math.ceil(cost)
@@ -92,6 +92,12 @@ function buildingClick(building) {
   profile.buildings[building.id - 1]++
   profile.cats = profile.cats - cost
   profile.cats = Math.ceil(profile.cats)
+}
+
+if (profile.buildings[building.id-1] == 0) {
+  infosBonus.innerHTML = `${1 * building.catPerSecond}`
+} else {
+  infosBonus.innerHTML = `${calcBuildingParSecondeNext}`
 }
 }
 
