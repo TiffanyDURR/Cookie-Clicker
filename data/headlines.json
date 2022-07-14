@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Ouverture !",
+    "content": "Un nouveau refuge a ouvert ses portes aujourd'hui !",
+    "limits": 
+    {
+      "minCat": 0,
+      "maxCat": 0
+    },
+    "triggers": 
+    {
+      "buildingId": 0,
+      "buildingAmount": 0
+    }
+  },
+  {
+    "id": 1,
+    "title": "Ouverture !",
+    "content": "Un nouveau refuge a ouvert ses portes aujourd'hui !",
+    "limits": 
+    {
+      "minCat": 0,
+      "maxCat": 0
+    },
+    "triggers": 
+    {
+      "buildingId": 0,
+      "buildingAmount": 0
+    }
+  }
+]
