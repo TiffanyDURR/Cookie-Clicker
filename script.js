@@ -10,9 +10,6 @@ const mainHeader = document.querySelector(".main-header");
 mainHeader.innerHTML = `
 <span>Nombre de chats par seconde</span>
 <p>000</p>`
-// AU CLIC
-
-
 
 function clicPlusUn() {
   chatACliquer1.addEventListener('click', () => {
@@ -31,12 +28,17 @@ function animationPlusUn() {
 
 const mainHeaderContent = document.querySelector(".main-header-content");
 
+function affichageMain (data, building) {
 
-function affichageMain (building) {
   let calcBuildingParSeconde = profile.buildings[building.id] * building.catPerSecond;
   const mainHeaderContent = document.querySelector(".main-header-content");
 
-if(document.querySelector(`.main-building${[building.id]}`) == document.querySelector(`.main-building${[building.id]}`)){
+if(data > 0){
+
+  let mainBuilding = document.querySelector(`.main-building${[building.id]}`);
+
+  if (mainBuilding)
+  {
   mainHeaderContent.innerHTML = `
   <div class="main-building${building.id} main-building-style"> 
   <div>
@@ -52,6 +54,7 @@ Nombre de <b>${building.name}</b> acheté(es) ; <span> ${profile.buildings[build
   <br/>
   <p>Ce bonus rapporte ${calcBuildingParSeconde} chat(s) toutes les secondes !</p>
   </div>`
+}
 }
 }
 
@@ -97,9 +100,6 @@ function buildingClick(building) {
 function gameLoop() {
   for (let i = 0; i < profile.buildings.length; i++) {
     profile.cats += buildingsData[i].catPerSecond * profile.buildings[i];
-
-    console.log(profile.cats);
-    console.log("add : " + buildingsData[i].catPerSecond * profile.buildings[i]);
   }
 }
 
@@ -109,28 +109,19 @@ function checkLoop() {
     let costArrondi = getBuildingCost(i) * 1.15
 
     costArrondi = Math.ceil(costArrondi)
-
-    if (profile.buildings[0] == 0) { // A enlever quand chaque building aura son texte au milieu
-      pattouneHeader.style.display = 'none'
-    }
-
-    if (profile.buildings[0] >= 1) {
-      pattouneHeader.style.display = 'block'
-    }
     
     var currentPanel = document.querySelector(`.buildingPrix${buildingsData[i].id}`);
     let bonus = document.querySelector(`.Bonus${buildingsData[i].id}`);
 
     currentPanel.innerHTML = `${nFormatter(costArrondi,3)}`;
     
-   // affichageScore.textContent = `${nFormatter(profile.cats,3)}`
     affichageScore.textContent = `${nFormatter(profile.cats,3)}`
     if (profile.cats <= costArrondi) {
       bonus.style.display = "none";
     } else {
        bonus.style.display = "block";
     }
-    affichageMain(buildingsData[i]);
+    affichageMain(profile.buildings[i], buildingsData[i]);
   }
 }
 
@@ -141,4 +132,3 @@ function metaLoop(){
 initialize();
 clicPlusUn();
 profile.loadData();
-
