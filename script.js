@@ -68,6 +68,7 @@ function spawnBuilding(building) {
          <div class="building-hover">${building.description}
          </div>
                 <span class="titre-bonus">${building.name}</span>
+                <div class="infosbonus${building.id} infosbonus"></div>
                 <div class="buildingPrix${building.id} prix">${building.costBase}</div>
                 <img class="Bonus${building.id}" src="./assets/${building.asset}">
             </div>
