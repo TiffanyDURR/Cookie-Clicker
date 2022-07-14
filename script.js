@@ -42,7 +42,7 @@ if(buildingLevel > 0){
   <div>
   Nombre de <b>${buildingData.name}</b> acheté(es) ; <span> ${buildingLevel} <i class="fas fa-paw"></i></span>
     <br/>
-    <p>Ce bonus rapporte ${calcBuildingParSeconde} chat(s) toutes les secondes !</p>
+    <p>Ce bonus rapportera ${calcBuildingParSeconde} chat(s) toutes les secondes !</p>
     </div>`
 } else {
   mainHeaderContent.innerHTML += `
