@@ -42,7 +42,7 @@ if(buildingLevel > 0){
   <div>
   Nombre de <b>${buildingData.name}</b> acheté(es) ; <span> ${buildingLevel} <i class="fas fa-paw"></i></span>
     <br/>
-    <p>Ce bonus rapportera ${calcBuildingParSeconde} chat(s) toutes les secondes !</p>
+    <p>Ce bonus rapporte ${calcBuildingParSeconde} chat(s) toutes les secondes !</p>
     </div>`
 } else {
   mainHeaderContent.innerHTML += `
@@ -67,7 +67,7 @@ function spawnBuilding(building) {
          <div class="building${building.id}"> 
          <div class="building-hover"><div>${building.description}
          <br>
-         <span>Rapporte ${calcBuildingParSecondeNextArrondi} chat(s) par seconde.<span></div></div>
+         <span>Rapportera ${calcBuildingParSecondeNextArrondi} chat(s) par seconde.<span></div></div>
                 <span class="titre-bonus">${building.name}</span>
                 <div class="buildingPrix${building.id} prix">${building.costBase}</div>
                 <img class="Bonus${building.id}" src="./assets/${building.asset}">
