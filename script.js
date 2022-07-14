@@ -65,9 +65,8 @@ function spawnBuilding(building) {
 
   buildingsPanel.innerHTML += `
          <div class="building${building.id}"> 
-         <div class="building-hover"><div>${building.description}
-         <br>
-         <span>Rapportera ${calcBuildingParSecondeNextArrondi} chat(s) par seconde.<span></div></div>
+         <div class="building-hover">${building.description}
+         </div>
                 <span class="titre-bonus">${building.name}</span>
                 <div class="buildingPrix${building.id} prix">${building.costBase}</div>
                 <img class="Bonus${building.id}" src="./assets/${building.asset}">
