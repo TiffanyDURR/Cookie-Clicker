@@ -414,3 +414,9 @@ z-index: 3000;
     padding-left: 90px;
     margin-top: 36px;   
 }
+
+.affichageScoreCenter {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
