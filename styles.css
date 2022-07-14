@@ -405,3 +405,12 @@ z-index: 3000;
 .main-header p {
     font-size: 30px;
 }
+
+.infosbonus {
+    font-family: 'Neucha', cursive;
+    font-size: 18px;
+    color: #b39188;
+    position: absolute;
+    padding-left: 90px;
+    margin-top: 36px;   
+}
