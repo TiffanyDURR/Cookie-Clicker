@@ -71,14 +71,17 @@ width: 700px;
     font-size: 20px;
     text-align: center;
     color: #f8ad9d;
+    margin-top: 4px;
 }
 
 .affichageScore {
-    font-family: 'Neucha', cursive;
+    font-family: 'Roboto Mono', monospace;
+    letter-spacing: -6px;
     font-weight: normal;
     font-size: 60px;
     text-align: left;
     color: #f8ad9d;
+    margin-top: -16px;
 }
 
 .clicPlusUnImage {
