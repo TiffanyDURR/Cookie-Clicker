@@ -71,15 +71,13 @@ function buildingDelegate(building) {
   let test = `.building${building.id}`
   let panel = document.querySelector(test)
 
+  refreshNextCost(building);
+
   panel.addEventListener('click', () => buildingClick(building))
 }
 
 
 function buildingClick(building) {
-  let infosBonus = document.querySelector(`.infosbonus${building.id}`);
-  let calcBuildingParSecondeNext = (profile.buildings[building.id - 1] + 1) * building.catPerSecond;
-
-  console.log('Building click' + building.id)
   let cost = getBuildingCost(building.id - 1)
   cost = Math.ceil(cost)
 
@@ -93,7 +91,15 @@ function buildingClick(building) {
   dummyScore = profile.cats;
 }
 
-if (profile.buildings[building.id-1] == 0) {
+refreshNextCost(building);
+
+}
+
+function refreshNextCost(building){
+  let infosBonus = document.querySelector(`.infosbonus${building.id}`);
+  let calcBuildingParSecondeNext = (profile.buildings[building.id - 1] + 1) * building.catPerSecond;
+
+if (profile.buildings[building.id - 1] == 0) {
   infosBonus.innerHTML = `${1 * building.catPerSecond}`
 } else {
   infosBonus.innerHTML = `${calcBuildingParSecondeNext}`
