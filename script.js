@@ -99,11 +99,7 @@ function refreshNextCost(building){
   let infosBonus = document.querySelector(`.infosbonus${building.id}`);
   let calcBuildingParSecondeNext = (profile.buildings[building.id - 1] + 1) * building.catPerSecond;
 
-if (profile.buildings[building.id - 1] == 0) {
-  infosBonus.innerHTML = `${1 * building.catPerSecond}`
-} else {
-  infosBonus.innerHTML = `${calcBuildingParSecondeNext}`
-}
+  infosBonus.innerHTML = `${nFormatter(calcBuildingParSecondeNext)}`;
 }
 
 function getTotalCatsPerSecond(){
