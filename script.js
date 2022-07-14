@@ -6,6 +6,7 @@ const pattouneHeader = document.querySelector('.pattouneHeader > div')
 const affichageCostPattoune = document.querySelector('.costPattoune')
 const buildingsPanel = document.querySelector('.buildings-panel')
 const mainHeader = document.querySelector(".main-header");
+const mainHeaderContent = document.querySelector(".main-header-content");
 
 mainHeader.innerHTML = `
 <span>Nombre de chats par seconde</span>
@@ -25,32 +26,29 @@ function animationPlusUn() {
   }, 150)
 }
 
+function affichageMain (buildingLevel, buildingData) {
 
-const mainHeaderContent = document.querySelector(".main-header-content");
-
-function affichageMain (data, building) {
-
-  let calcBuildingParSeconde = profile.buildings[building.id] * building.catPerSecond;
+  let calcBuildingParSeconde = buildingLevel * buildingData.catPerSecond;
   const mainHeaderContent = document.querySelector(".main-header-content");
 
-if(data > 0){
+if(buildingLevel > 0){
 
-  let mainBuilding = document.querySelector(`.main-building${[building.id]}`);
+  let mainBuilding = document.querySelector(`.main-building${[buildingData.id]}`);
 
   if (mainBuilding)
   {
   mainHeaderContent.innerHTML = `
-  <div class="main-building${building.id} main-building-style"> 
+  <div class="main-building${buildingData.id} main-building-style"> 
   <div>
-  Nombre de <b>${building.name}</b> acheté(es) ; <span> ${profile.buildings[building.id]} <i class="fas fa-paw"></i></span>
+  Nombre de <b>${buildingData.name}</b> acheté(es) ; <span> ${buildingLevel} <i class="fas fa-paw"></i></span>
     <br/>
     <p>Ce bonus rapporte ${calcBuildingParSeconde} chat(s) toutes les secondes !</p>
     </div>`
 } else {
   mainHeaderContent.innerHTML += `
-<div class="main-building${building.id} main-building-style"> 
+<div class="main-building${buildingData.id} main-building-style"> 
 <div>
-Nombre de <b>${building.name}</b> acheté(es) ; <span> ${profile.buildings[building.id]} <i class="fas fa-paw"></i></span>
+Nombre de <b>${buildingData.name}</b> acheté(es) ; <span> ${buildingLevel} <i class="fas fa-paw"></i></span>
   <br/>
   <p>Ce bonus rapporte ${calcBuildingParSeconde} chat(s) toutes les secondes !</p>
   </div>`
