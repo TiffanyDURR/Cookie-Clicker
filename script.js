@@ -1,17 +1,18 @@
-let profile = new Profile('Player', 3000)
+let profile = new Profile('Player', 10000);
 let dummyScore;
-const affichageScore = document.querySelector('.affichageScore')
-const chatACliquer1 = document.querySelector('.chatACliquer1')
-const clicPlusUnImage = document.querySelector('.clicPlusUnImage')
-const pattouneHeader = document.querySelector('.pattouneHeader > div')
-const affichageCostPattoune = document.querySelector('.costPattoune')
-const buildingsPanel = document.querySelector('.buildings-panel')
+const affichageScore = document.querySelector('.affichageScore');
+const chatACliquer1 = document.querySelector('.chatACliquer1');
+const clicPlusUnImage = document.querySelector('.clicPlusUnImage');
+const pattouneHeader = document.querySelector('.pattouneHeader > div');
+const affichageCostPattoune = document.querySelector('.costPattoune');
+const buildingsPanel = document.querySelector('.buildings-panel');
 const mainHeader = document.querySelector(".main-header");
 const mainHeaderContent = document.querySelector(".main-header-content");
 const refugeName = document.getElementById("refuge-name");
 const buttonCheck = document.querySelector(".button-check");
 const refugeNameContainer = document.querySelector(".refuge-title");
-
+const headlineTitle = document.querySelector(".headline-title");
+const headlineContent = document.querySelector(".headline-content");
 
 refugeName.addEventListener("input", (e) => {
   pseudo = e.target.value; 
@@ -24,11 +25,11 @@ buttonCheck.addEventListener("click", () => {
   buttonCheck.style.display = "none";
 })
 
-
 function clicPlusUn() {
   chatACliquer1.addEventListener('click', () => {
-    profile.cats++
-    animationPlusUn()
+    profile.cats++;
+    dummyScore = profile.cats;
+    animationPlusUn();
   })
 }
 
@@ -48,25 +49,21 @@ if(buildingLevel > 0){
 
   let mainBuilding = document.querySelector(`.main-building${[buildingData.id]}`);
 
-  if (mainBuilding)
-  {
-  mainHeaderContent.innerHTML = `
-  <div class="main-building${buildingData.id} main-building-style"> 
+  let buildingHTML = `<div class="main-building${buildingData.id} main-building-style"> 
   <div>
   Nombre de <b>${buildingData.name}</b> acheté(es) ; <span> ${buildingLevel} <i class="fas fa-paw"></i></span>
     <br/>
-    <p>Ce bonus rapporte ${calcBuildingParSeconde} chat(s) toutes les secondes !</p>
-    </div>`
-} else {
-  mainHeaderContent.innerHTML += `
-<div class="main-building${buildingData.id} main-building-style"> 
-<div>
-Nombre de <b>${buildingData.name}</b> acheté(es) ; <span> ${buildingLevel} <i class="fas fa-paw"></i></span>
-  <br/>
-  <p>Ce bonus rapporte ${calcBuildingParSeconde} chat(s) toutes les secondes !</p>
-  </div>`
-}
-}
+    <p>Ce bonus rapporte ${nFormatter(calcBuildingParSeconde, 3)} chat(s) toutes les secondes !</p>
+    </div>`;
+
+  if (mainBuilding) 
+  {
+    mainHeaderContent.innerHTML = buildingHTML;
+  } 
+  else {
+    mainHeaderContent.innerHTML += buildingHTML;
+  }
+  }
 }
 
 function spawnBuilding(building) {
@@ -92,19 +89,16 @@ function buildingDelegate(building) {
   panel.addEventListener('click', () => buildingClick(building))
 }
 
-
 function buildingClick(building) {
   let cost = getBuildingCost(building.id - 1)
   cost = Math.ceil(cost)
 
   if (cost <= profile.cats)
   {
+    profile.buildings[building.id - 1]++
+    profile.spendCats(cost);
 
-  profile.buildings[building.id - 1]++
-  profile.cats = profile.cats - cost
-  profile.cats = Math.ceil(profile.cats)
-
-  dummyScore = profile.cats;
+    dummyScore = profile.cats;
 }
 
 refreshNextCost(building);
@@ -116,6 +110,13 @@ function refreshNextCost(building){
   let calcBuildingParSecondeNext = (profile.buildings[building.id - 1] + 1) * building.catPerSecond;
 
   infosBonus.innerHTML = `${nFormatter(calcBuildingParSecondeNext)} chat(s) / s`;
+}
+
+function changeHeadlines(){
+  let headline = pickRandomHeadline(profile);
+
+  headlineTitle.innerHTML = headline.title;
+  headlineContent.innerHTML = headline.content;
 }
 
 function getTotalCatsPerSecond(){
@@ -172,9 +173,11 @@ function checkLoop() {
 
 function metaLoop(){
  profile.saveData();
+ changeHeadlines();
 }
 
-initialize();
+initializeData();
+initializeNews(); // Big Initialize
 clicPlusUn();
 profile.loadData();
 dummyScore = profile.cats;

@@ -4,7 +4,6 @@
     "name": "Pattoune",
     "description": "Une petite pattoune de chat qui clique à votre place",
     "costBase": 15,
-    "costFactor": 1,
     "catPerSecond": 0.1,
     "asset": "pattoune.png",
     "asset-bg": "pattoune-bg.png"
@@ -14,7 +13,6 @@
     "name": "Souris",
     "description": "Attirer d'autres chats avec un appât de choix",
     "costBase": 100,
-    "costFactor": 1,
     "catPerSecond": 1,
     "asset": "souris.png",
     "asset-bg": "souris-bg.png"
@@ -24,7 +22,6 @@
     "name": "Herbe à chat",
     "description": "Tous les moyens sont bons (A consommer avec modération)",
     "costBase": 1100,
-    "costFactor": 1,
     "catPerSecond": 8,
     "asset": "herbeachats.png",
     "asset-bg": "herbeachats-bg.png"
@@ -34,7 +31,6 @@
     "name": "Vache à lait",
     "description": "Pour gagner du temps, vous achetez vos propres vaches pour la production de lait",
     "costBase": 12000,
-    "costFactor": 1,
     "catPerSecond": 47,
     "asset": "milk.png",
     "asset-bg": "milk-bg.png"
@@ -44,7 +40,6 @@
     "name": "Laser",
     "description": "L'avancée scientifique parfaite pour attirer quelques minoux supplémentaires",
     "costBase": 130000,
-    "costFactor": 1,
     "catPerSecond": 260,
     "asset": "laser.png",
     "asset-bg": "laser-bg.png"
@@ -54,7 +49,6 @@
     "name": "Autel de pharaon",
     "description": "La population se met à vénérer les chats tels les anciens égyptiens",
     "costBase": 1400000,
-    "costFactor": 1,
     "catPerSecond": 1400,
     "asset": "autel.png",
     "asset-bg": "autel-bg.png"
@@ -64,7 +58,6 @@
     "name": "Lolcat",
     "description": "Noyez Internet avec des memes de chats. Ca marche à tous les coups",
     "costBase": 20000000,
-    "costFactor": 1,
     "catPerSecond": 7800,
     "asset": "lolcat.png",
     "asset-bg": "lolcat-bg.png"
@@ -74,7 +67,6 @@
     "name": "Campagne Anti-Chien",
     "description": "Un chien de moins = Un chat de plus",
     "costBase": 330000000,
-    "costFactor": 1,
     "catPerSecond": 44000,
     "asset": "campagne.png",
     "asset-bg": "campagne-bg.png"
@@ -84,7 +76,6 @@
     "name": "Robot-Chat",
     "description": "Pour suivre la demande croissante, vous fabriquez des robots poilus en espérant que personne ne le remarque",
     "costBase":  5100000000,
-    "costFactor": 1,
     "catPerSecond": 260000,
     "asset": "robot.png",
     "asset-bg": "robot-bg.png"
@@ -94,7 +85,6 @@
     "name": "Machine à cloner",
     "description": "Les brebis, c'est surfait",
     "costBase": 75000000000,
-    "costFactor": 1,
     "catPerSecond": 1600000,
     "asset": "clonage.png",
     "asset-bg": "conage-bg.png"

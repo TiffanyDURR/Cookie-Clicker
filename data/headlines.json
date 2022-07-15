@@ -1,32 +1,89 @@
 [
   {
     "id": 1,
-    "title": "Ouverture !",
-    "content": "Un nouveau refuge a ouvert ses portes aujourd'hui !",
-    "limits": 
-    {
-      "minCat": 0,
-      "maxCat": 0
-    },
-    "triggers": 
-    {
-      "buildingId": 0,
-      "buildingAmount": 0
+    "title": "Rien à signaler !",
+    "content": "C'est le calme plat absolu.",
+    "triggers": {
+      "buildingId": 1,
+      "buildingAmount": 1
     }
   },
   {
-    "id": 1,
-    "title": "Ouverture !",
-    "content": "Un nouveau refuge a ouvert ses portes aujourd'hui !",
-    "limits": 
-    {
+    "id": 2,
+    "title": "Grande ouverture !",
+    "content": "Le refuge {name} a ouvert ses portes aujourd'hui !",
+    "limits": {
       "minCat": 0,
-      "maxCat": 0
-    },
-    "triggers": 
-    {
-      "buildingId": 0,
-      "buildingAmount": 0
+      "maxCat": 500000
+    }
+  },
+  {
+    "id": 3,
+    "title": "Nouvelle mode",
+    "content": "Les chats font leur grand retour dans les chaumières, les chiens ont-ils du soucis à se faire ?",
+    "limits": {
+      "minCat": 0,
+      "maxCat": 100000
+    }
+  },
+  {
+    "id": 4,
+    "title": "Miaow",
+    "content": "'Miaow miaooow miaow miaouw miaw miaou' selon certaines sources."
+  },
+  {
+    "id": 5,
+    "title": "Démarrage en trombe",
+    "content": "Chez le très récent refuge {name}, on fête le début d'une belle aventure !",
+    "limits": {
+      "minCat": 1000,
+      "maxCat": 1000000
+    }
+  },
+  {
+    "id": 6,
+    "title": "Ouaf",
+    "content": "'Wouaf wouf ouaf ouaf wouuf' disent certains contradicteurs ayant la langue bien pendue."
+  },
+  {
+    "id": 7,
+    "title": "Chatons à adopter",
+    "content": "Portée de chatons tout mignon tout plein à adopter. Venez (très) nombreux."
+  },
+  {
+    "id": 105,
+    "title": "Attaque de souris ?",
+    "content": "Le nombre de souris grandit et inquiète, heureusement le nombre de chats est lui aussi croissant.",
+    "triggers": {
+      "buildingId": 2,
+      "buildingAmount": 10
+    }
+  },
+  {
+    "id": 106,
+    "title": "Scandale sanitaire",
+    "content": "Les chats seraient accros à l'herbe à chat, selon certains témoins approchés.",
+    "triggers": {
+      "buildingId": 3,
+      "buildingAmount": 1
+    }
+  },
+  {
+    "id": 107,
+    "title": "Le plein de Calcium",
+    "content": "On dit que le refuge {name} possèdent ses propres vaches.",
+    "triggers": {
+      "buildingId": 4,
+      "buildingAmount": 10
+    }
+  },
+  {
+    "id": 108,
+    "title": "C'est pas Sorcier",
+    "content": "Hey dis donc Jamy, ça marche comment la technologie Laser ?",
+    "triggers": {
+      "buildingId": 5,
+      "buildingAmount": 10
     }
   }
 ]
