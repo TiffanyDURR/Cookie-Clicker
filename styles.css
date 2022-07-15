@@ -325,6 +325,7 @@ h3 {
     display: flex;
 margin-left: 90px;
 margin-top: 10px;
+	width: 266px;
 }
 
 .building-hover {
@@ -423,6 +424,7 @@ z-index: 3000;
     position: absolute;
     padding-left: 90px;
     margin-top: 36px;   
+	width: 266px;
 }
 
 
