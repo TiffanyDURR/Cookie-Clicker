@@ -480,10 +480,6 @@ input:active, input:focus {
     margin-top: 60px;
 }
 
-* {
-    word-break: break-all;
-}
-
 .refuge-title {
     background: url("assets/refuge-title.png");
     font-family: 'Caveat Brush', cursive;
