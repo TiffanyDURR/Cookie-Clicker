@@ -8,6 +8,22 @@ const affichageCostPattoune = document.querySelector('.costPattoune')
 const buildingsPanel = document.querySelector('.buildings-panel')
 const mainHeader = document.querySelector(".main-header");
 const mainHeaderContent = document.querySelector(".main-header-content");
+const refugeName = document.getElementById("refuge-name");
+const buttonCheck = document.querySelector(".button-check");
+const refugeNameContainer = document.querySelector(".refuge-title");
+
+
+refugeName.addEventListener("input", (e) => {
+  pseudo = e.target.value; 
+  console.log(pseudo)
+  refugeNameContainer.innerHTML = `${pseudo}`
+});
+
+buttonCheck.addEventListener("click", () => {
+  refugeName.style.display = "none";
+  buttonCheck.style.display = "none";
+})
+
 
 function clicPlusUn() {
   chatACliquer1.addEventListener('click', () => {
@@ -59,7 +75,7 @@ function spawnBuilding(building) {
          <div class="building${building.id}"> 
          <div class="building-hover">${building.description}
          </div>
-                <span class="titre-bonus">${building.name}</span>
+                <span class="titre-bonus">${building.name} (x)</span>
                 <div class="infosbonus${building.id} infosbonus"></div>
                 <div class="buildingPrix${building.id} prix">${building.costBase}</div>
                 <img class="Bonus${building.id}" src="./assets/${building.asset}">

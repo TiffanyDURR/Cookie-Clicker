@@ -8,6 +8,7 @@ body {
     background: url(assets/wallpaper.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    font-family: 'Neucha', cursive;
 }
 
 * {
@@ -29,9 +30,8 @@ h1 {
 
 .app {
     width: 1400px;
-    padding-top: 40px;
+    padding-top: 60px;
     padding-bottom: 40px;
-    display: flex;
     justify-content: center;
     margin-right: auto;
     margin-left: auto;
@@ -40,6 +40,10 @@ h1 {
     background-color: #e8d5cc;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     border-radius: 30px;
+}
+
+.app-content {
+    display: flex;
 }
 
 .app-aside {
@@ -315,7 +319,7 @@ h3 {
 
 .titre-bonus {
     font-family: 'Caveat Brush', cursive;
-    font-size: 20px;
+    font-size: 18px;
     color: #b39188;
     position: absolute;
     display: flex;
@@ -421,3 +425,112 @@ z-index: 3000;
     margin-top: 36px;   
 }
 
+
+.refugetitle {
+    width: 277px;
+    height: 149px;
+    background: url(assets/refuge-title.png);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+#refuge-name {
+    border: 0px;
+    background-color: #b39188;
+    background: url(assets/back-input-name.png);
+    font-family: 'Neucha', cursive;
+    padding-top: 14px;
+    padding-bottom: 14px;
+width: 242px;
+height: 63px;
+padding-left: 20px;
+padding-right: 60px;
+font-size: 20px;
+border: 0px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-left: auto;
+margin-right: auto;
+color: #b18f86;
+margin-bottom: 16px;
+}
+
+::placeholder {
+    color: #b18f86;
+}
+
+input:active, input:focus {
+    border: none;
+    outline: none;
+    -moz-outline-style: none; 
+    box-shadow: none;
+}
+
+.app-head {
+    width: 1236px;
+    height: 124px;
+    background: url(assets/news-bg.png);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-top: 60px;
+}
+
+* {
+    word-break: break-all;
+}
+
+.refuge-title {
+    background: url("assets/refuge-title.png");
+    font-family: 'Caveat Brush', cursive;
+    font-size: 34px;
+    width: 277px;
+    height: 149px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: #b18f86;
+    word-break: break-all;
+    padding-left: 30px;
+    padding-right: 16px;
+}
+
+.button-check {
+    top: -56px;
+    margin-left: 184px;
+    background-color: #f5ab9b;
+    color: #eee3de;
+    position: relative;
+    z-index: 4000;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.headline-title {
+    position: relative;
+    text-align: left;
+    font-size: 26px;
+    color: #b18f86;
+    padding-left: 130px;
+    padding-top: 36px;
+    width: 680px;
+}
+
+.headline-content {
+    position: relative;
+    text-align: left;
+    font-size: 20px;
+    color: #b18f86;
+    padding-left: 130px;
+    padding-top: 12px;
+    width: 680px;
+    line-height: 1;
+}
