@@ -45,7 +45,7 @@ function affichageMain (buildingLevel, buildingData) {
 
   let buildingHTML = `<div class="main-building${buildingData.id} main-building-style" style="display: none;"> 
   <div>
-  Nombre de <b>${buildingData.name}</b> acheté(es) ; <span> ${buildingLevel} <i class="fas fa-paw"></i></span>
+  Nombre de <b>${buildingData.name}</b> acheté(es) ; <span class="mainCount${buildingData.id}"> ${buildingLevel} <i class="fas fa-paw"></i></span>
     <br/>
     <p>Ce bonus rapporte ${nFormatter(calcBuildingParSeconde, 3)} chat(s) toutes les secondes !</p>
     </div>`;
@@ -118,9 +118,12 @@ function getTotalCatsPerSecond(){
 
 function refreshMain(building){
   let mainBuilding = document.querySelector(`.main-building${[building.id]}`);
+  let spanCount = document.querySelector(`.mainCount${building.id}`);
+
+  spanCount.innerHTML = `<span class="mainCount${building.id}"> ${profile.buildings[building.id -1]} <i class="fas fa-paw"></i></span>`
 
   if (profile.buildings[building.id -1] > 0){
-   mainBuilding.style.display = "";
+    mainBuilding.style.display = "";
   }
 }
 
