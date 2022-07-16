@@ -1,5 +1,4 @@
 let profile = new Profile('Player', 10000);
-let dummyScore;
 const affichageScore = document.querySelector('.affichageScore');
 const chatACliquer1 = document.querySelector('.chatACliquer1');
 const clicPlusUnImage = document.querySelector('.clicPlusUnImage');
@@ -28,7 +27,6 @@ buttonCheck.addEventListener("click", () => {
 function clicPlusUn() {
   chatACliquer1.addEventListener('click', () => {
     profile.cats++;
-    dummyScore = profile.cats;
     animationPlusUn();
   })
 }
@@ -45,25 +43,14 @@ function affichageMain (buildingLevel, buildingData) {
   let calcBuildingParSeconde = buildingLevel * buildingData.catPerSecond;
   const mainHeaderContent = document.querySelector(".main-header-content");
 
-if(buildingLevel > 0){
-
-  let mainBuilding = document.querySelector(`.main-building${[buildingData.id]}`);
-
-  let buildingHTML = `<div class="main-building${buildingData.id} main-building-style"> 
+  let buildingHTML = `<div class="main-building${buildingData.id} main-building-style" style="display: none;"> 
   <div>
   Nombre de <b>${buildingData.name}</b> acheté(es) ; <span> ${buildingLevel} <i class="fas fa-paw"></i></span>
     <br/>
     <p>Ce bonus rapporte ${nFormatter(calcBuildingParSeconde, 3)} chat(s) toutes les secondes !</p>
     </div>`;
 
-  if (mainBuilding) 
-  {
-    mainHeaderContent.innerHTML = buildingHTML;
-  } 
-  else {
     mainHeaderContent.innerHTML += buildingHTML;
-  }
-  }
 }
 
 function spawnBuilding(building) {
@@ -78,6 +65,7 @@ function spawnBuilding(building) {
                 <img class="Bonus${building.id}" src="./assets/${building.asset}">
             </div>
         `      
+    affichageMain(profile.buildings[building.id-1], building);
 }
 
 function buildingDelegate(building) {
@@ -97,8 +85,6 @@ function buildingClick(building) {
   {
     profile.buildings[building.id - 1]++
     profile.spendCats(cost);
-
-    dummyScore = profile.cats;
 }
 
 refreshNextCost(building);
@@ -130,18 +116,25 @@ function getTotalCatsPerSecond(){
   return total;
 }
 
+function refreshMain(building){
+  let mainBuilding = document.querySelector(`.main-building${[building.id]}`);
+
+  if (profile.buildings[building.id -1] > 0){
+   mainBuilding.style.display = "";
+  }
+}
+
 function refreshScore(){
 
   let catPerLoop = getTotalCatsPerSecond() / 100;
 
-  dummyScore += catPerLoop
+  profile.cats += catPerLoop
 
-  affichageScore.textContent = `${nFormatter(dummyScore, 3)}`;
+  affichageScore.textContent = `${nFormatter(profile.cats, 3)}`;
 }
 
 function gameLoop() {
-    profile.cats += getTotalCatsPerSecond();
-    dummyScore = profile.cats;
+    //profile.cats += getTotalCatsPerSecond();
 }
 
 function checkLoop() {
@@ -151,14 +144,14 @@ function checkLoop() {
 
   for (let i = 0; i < buildingsData.length; i++) 
   {
-    let costArrondi = getBuildingCost(i) * 1.15
+    let costArrondi = getBuildingCost(i) * 1.15;
 
-    costArrondi = Math.ceil(costArrondi)
+    costArrondi = Math.ceil(costArrondi);
     
     var currentPanel = document.querySelector(`.buildingPrix${buildingsData[i].id}`);
     let bonus = document.querySelector(`.Bonus${buildingsData[i].id}`);
 
-    currentPanel.innerHTML = `${nFormatter(costArrondi,3)}`;
+    currentPanel.innerHTML = `${nFormatter(costArrondi, 3)}`;
     
     if (profile.cats <= costArrondi) {
       bonus.style.display = "none";
@@ -167,17 +160,17 @@ function checkLoop() {
     else {
        bonus.style.display = "block";
     }
-    affichageMain(profile.buildings[i], buildingsData[i]);
+
+    refreshMain(buildingsData[i]);
   }
 }
 
 function metaLoop(){
- profile.saveData();
- changeHeadlines();
+  profile.saveData();
+  changeHeadlines();
 }
 
 initializeData();
 initializeNews(); // Big Initialize
 clicPlusUn();
 profile.loadData();
-dummyScore = profile.cats;
