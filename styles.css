@@ -3,7 +3,7 @@ body {
     padding: 0px;
     margin: 0px;
     text-align: center;
-    margin-top: 60px;
+    padding-top: 60px;
     margin-bottom: 60px;
     background: url(assets/wallpaper.jpg);
     background-size: cover;
@@ -532,3 +532,76 @@ input:active, input:focus {
     width: 680px;
     line-height: 1;
 }
+
+
+.golden-paw-container {
+    min-height: 100%;
+min-width: 100%;
+
+
+margin-left: auto;
+margin-right: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+position: fixed;
+z-index: 5000;
+}
+
+.golden-paw {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  background: url(assets/golden-paw.png);
+  background-size: cover;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  z-index: 5000;
+  animation: goldenPawAnim 6s forwards;
+cursor: pointer;
+transform: scale(0);
+opacity: 0;
+}
+
+
+
+@keyframes goldenPawAnim {
+   
+    0% {
+transform: scale(0) rotateZ(0deg);
+opacity: 0;
+    }
+
+    5% {
+opacity: 1;
+transform: scale(1) rotateZ(23deg);
+
+    }
+
+    20% {
+        transform: scale(1.2) rotateZ(90deg);
+    }
+
+    40% {
+        transform: scale(1.4) otateZ(180deg);
+
+    }
+
+    60% {
+        transform: scale(1.4) rotateZ(270deg);
+    }
+
+    80% {
+        transform: scale(1.2) rotateZ(360deg);
+    }
+
+    95% {
+opacity: 1;
+transform: scale(1) rotateZ(383deg);
+    }
+
+    100% {
+        transform: scale(0) rotateZ(450deg);
+        opacity: 0;
+    }
+
+  }
