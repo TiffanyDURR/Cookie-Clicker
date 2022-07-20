@@ -5,9 +5,6 @@ async function initializeNews() {
  headlines = await getJSON('./data/headlines.json');
 }
 
-/*
-A faire aussi pour Title ?
-*/
 function pickRandomHeadline(profile){
 
     let availableHeadlines = [];
@@ -49,8 +46,6 @@ function pickRandomHeadline(profile){
             }
         }
     }
-
-    // console.log(availableHeadlines);
 
     let randomHeadline =  availableHeadlines[Math.floor(Math.random() * availableHeadlines.length)];
 

@@ -13,17 +13,20 @@ const refugeNameContainer = document.querySelector(".refuge-title");
 const headlineTitle = document.querySelector(".headline-title");
 const headlineContent = document.querySelector(".headline-content");
 
+// TODO : dans un big Init
 refugeName.addEventListener("input", (e) => {
   pseudo = e.target.value; 
   console.log(pseudo)
   refugeNameContainer.innerHTML = `${pseudo}`
 });
 
+// TODO : dans un big Init
 buttonCheck.addEventListener("click", () => {
   refugeName.style.display = "none";
   buttonCheck.style.display = "none";
 })
 
+// TODO : a revoir dans la 0.3
 function clicPlusUn() {
   chatACliquer1.addEventListener('click', () => {
     profile.cats++;
@@ -31,6 +34,7 @@ function clicPlusUn() {
   })
 }
 
+// TODO : a revoir dans la 0.3
 function animationPlusUn() {
   clicPlusUnImage.classList.add('clicAnimPlusUn')
   setTimeout(function () {
@@ -59,7 +63,7 @@ function spawnBuilding(building) {
          <div class="building${building.id}"> 
          <div class="building-hover">${building.description}
          </div>
-                <span class="titre-bonus">${building.name} (x)</span>
+                <span class="titre-bonus">${building.name} (x)</span> // TODO: Mettre ça dans un fichier à part avec des const
                 <div class="infosbonus${building.id} infosbonus"></div>
                 <div class="buildingPrix${building.id} prix">${building.costBase}</div>
                 <img class="Bonus${building.id}" src="./assets/${building.asset}">
@@ -68,18 +72,18 @@ function spawnBuilding(building) {
     affichageMain(profile.buildings[building.id-1], building);
 }
 
+/// TODO : Check si c'est toujours utile
 function buildingDelegate(building) {
-  let test = `.building${building.id}`
-  let panel = document.querySelector(test)
+  let panel = document.querySelector(`.building${building.id}`);
 
   refreshNextCost(building);
 
-  panel.addEventListener('click', () => buildingClick(building))
+  panel.addEventListener('click', () => buildingClick(building));
 }
 
 function buildingClick(building) {
-  let cost = getBuildingCost(building.id - 1)
-  cost = Math.ceil(cost)
+  let cost = getBuildingCost(building.id - 1);
+  cost = Math.ceil(cost);
 
   if (cost <= profile.cats)
   {
@@ -105,6 +109,7 @@ function changeHeadlines(){
   headlineContent.innerHTML = headline.content;
 }
 
+// TODO : mettre ça dans Data ?
 function getTotalCatsPerSecond(){
 
   let total = 0;
@@ -120,7 +125,7 @@ function refreshMain(building){
   let mainBuilding = document.querySelector(`.main-building${[building.id]}`);
   let spanCount = document.querySelector(`.mainCount${building.id}`);
 
-  spanCount.innerHTML = `<span class="mainCount${building.id}"> ${profile.buildings[building.id -1]} <i class="fas fa-paw"></i></span>`
+  spanCount.innerHTML = `<span class="mainCount${building.id}"> ${profile.buildings[building.id -1]} <i class="fas fa-paw"></i></span>`; // TODO : Isoler le Count dans un span ou une div pour simplifier
 
   if (profile.buildings[building.id -1] > 0){
     mainBuilding.style.display = "";
@@ -131,11 +136,12 @@ function refreshScore(){
 
   let catPerLoop = getTotalCatsPerSecond() / 100;
 
-  profile.cats += catPerLoop
+  profile.cats += catPerLoop;
 
   affichageScore.textContent = `${nFormatter(profile.cats, 3)}`;
 }
 
+// TODO : Garder ?
 function gameLoop() {
     //profile.cats += getTotalCatsPerSecond();
 }
@@ -143,11 +149,11 @@ function gameLoop() {
 function checkLoop() {
   refreshScore();
 
-  mainHeader.innerHTML = `<span>Nombre de chats par seconde</span><p>${nFormatter(getTotalCatsPerSecond(),1)}</p>`;
+  mainHeader.innerHTML = `<span>Nombre de chats par seconde</span><p>${nFormatter(getTotalCatsPerSecond(),1)}</p>`; // TODO : isole aussi le CPS ?
 
-  for (let i = 0; i < buildingsData.length; i++) 
+  for (let i = 0; i < buildingsData.length; i++) // TODO : Mettre tout ça dans une méthode a part
   {
-    let costArrondi = getBuildingCost(i) * 1.15;
+    let costArrondi = getBuildingCost(i) * 1.15; // TODO : Appeller directement la méthode qu'il faut
 
     costArrondi = Math.ceil(costArrondi);
     
@@ -174,6 +180,6 @@ function metaLoop(){
 }
 
 initializeData();
-initializeNews(); // Big Initialize
+initializeNews(); // TODO : big initialize
 clicPlusUn();
 profile.loadData();

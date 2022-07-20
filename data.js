@@ -55,8 +55,6 @@ class Profile {
       this.lastSaveDateTime = Date.parse(localStorage.getItem('lastSave'));
       this.usedCats = parseInt(localStorage.getItem('usedCats'));
     }
-
-    console.log("Used cats : " + this.usedCats); 
   }
 
   clearData() {
