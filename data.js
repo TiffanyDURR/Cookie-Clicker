@@ -1,63 +1,73 @@
-let buildingsData;
+let buildingsData
 
-async function initializeData() {
-  buildingsData = await getJSON('./data/buildings.json');
+async function loadingGameData() {
+  buildingsData = await getJSON('./data/buildings.json')
 
   for (let i = 0; i < buildingsData.length; i++) {
-    spawnBuilding(buildingsData[i]);
+    spawnBuilding(buildingsData[i])
   }
 
   for (let i = 0; i < buildingsData.length; i++) {
-    buildingDelegate(buildingsData[i]);
+    buildingDelegate(buildingsData[i])
   }
 
-  setInterval(gameLoop, 1000);
-  setInterval(checkLoop, 10);
-  setInterval(metaLoop, 10000);
+  setInterval(gameLoop, 1000)
+  setInterval(checkLoop, 10)
+  setInterval(metaLoop, 10000)
 }
 
 function getBuildingCost(index) {
-  var building = buildingsData[index];
+  var building = buildingsData[index]
 
-  return building.costBase * 1.15 ** profile.buildings[index];
+  return building.costBase * 1.15 ** profile.buildings[index]
+}
+
+function getTotalCatsPerSecond() {
+  let total = 0
+
+  for (let i = 0; i < profile.buildings.length; i++) {
+    total += buildingsData[i].catPerSecond * profile.buildings[i]
+  }
+
+  return total
 }
 
 class Profile {
   constructor(name, cats) {
-    this.name = name;
-    this.cats = cats;
-    this.usedCats = 0;
-    this.startDateTime = new Date();
-    this.lastSaveDateTime = new Date();
+    this.name = name
+    this.cats = cats
+    this.usedCats = 0
+    this.startDateTime = new Date()
+    this.lastSaveDateTime = new Date()
     this.buildings = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   }
 
-  spendCats(amount){
-    this.cats -= amount;
-    this.usedCats += amount;
+  spendCats(amount) {
+    this.cats -= amount
+    this.usedCats += amount
   }
 
   saveData() {
-    localStorage.setItem('name', this.name);
-    localStorage.setItem('cats', this.cats);
-    localStorage.setItem('buildings', JSON.stringify(this.buildings));
-    localStorage.setItem('start', this.startDateTime);
-    localStorage.setItem('lastSave', new Date());
-    localStorage.setItem('usedCats', this.usedCats);
+    localStorage.setItem('name', this.name)
+    localStorage.setItem('cats', this.cats)
+    localStorage.setItem('buildings', JSON.stringify(this.buildings))
+    localStorage.setItem('start', this.startDateTime)
+    localStorage.setItem('lastSave', new Date())
+    localStorage.setItem('usedCats', this.usedCats)
   }
 
   loadData() {
     if (localStorage.length > 0) {
-      this.name = localStorage.getItem('name');
-      this.cats = parseInt(localStorage.getItem('cats'));
-      this.buildings = JSON.parse(localStorage.getItem('buildings'));
-      this.startDateTime = Date.parse(localStorage.getItem('start'));
-      this.lastSaveDateTime = Date.parse(localStorage.getItem('lastSave'));
-      this.usedCats = parseInt(localStorage.getItem('usedCats'));
+      this.name = localStorage.getItem('name')
+      this.cats = parseInt(localStorage.getItem('cats'))
+      this.buildings = JSON.parse(localStorage.getItem('buildings'))
+      this.startDateTime = Date.parse(localStorage.getItem('start'))
+      this.lastSaveDateTime = Date.parse(localStorage.getItem('lastSave'))
+      this.usedCats = parseInt(localStorage.getItem('usedCats'))
     }
   }
 
   clearData() {
-    localStorage.clear();
+    localStorage.clear()
   }
 }

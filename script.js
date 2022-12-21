@@ -13,33 +13,27 @@ const refugeNameContainer = document.querySelector(".refuge-title");
 const headlineTitle = document.querySelector(".headline-title");
 const headlineContent = document.querySelector(".headline-content");
 
-// TODO : dans un big Init
-refugeName.addEventListener("input", (e) => {
-  pseudo = e.target.value; 
-  console.log(pseudo)
-  refugeNameContainer.innerHTML = `${pseudo}`
-});
+function loadingListeners(){
+  refugeName.addEventListener("input", (e) => {
+    pseudo = e.target.value; 
+    console.log(pseudo)
+    refugeNameContainer.innerHTML = `${pseudo}`
+  });
 
-// TODO : dans un big Init
-buttonCheck.addEventListener("click", () => {
-  refugeName.style.display = "none";
-  buttonCheck.style.display = "none";
-})
-
-// TODO : a revoir dans la 0.3
-function clicPlusUn() {
-  chatACliquer1.addEventListener('click', () => {
-    profile.cats++;
-    animationPlusUn();
+  buttonCheck.addEventListener("click", () => {
+    refugeName.style.display = "none";
+    buttonCheck.style.display = "none";
+    profile.name = pseudo;
+    profile.saveData();
   })
-}
 
-// TODO : a revoir dans la 0.3
-function animationPlusUn() {
-  clicPlusUnImage.classList.add('clicAnimPlusUn')
-  setTimeout(function () {
-    clicPlusUnImage.classList.remove('clicAnimPlusUn')
-  }, 150)
+    chatACliquer1.addEventListener('click', () => {
+      profile.cats++;
+      clicPlusUnImage.classList.add('clicAnimPlusUn')
+      setTimeout(function () {
+        clicPlusUnImage.classList.remove('clicAnimPlusUn')
+      }, 150)
+        })
 }
 
 function affichageMain (buildingLevel, buildingData) {
@@ -63,7 +57,7 @@ function spawnBuilding(building) {
          <div class="building${building.id}"> 
          <div class="building-hover">${building.description}
          </div>
-                <span class="titre-bonus">${building.name} (x)</span> // TODO: Mettre ça dans un fichier à part avec des const
+                <span class="titre-bonus">${building.name} (x)</span>
                 <div class="infosbonus${building.id} infosbonus"></div>
                 <div class="buildingPrix${building.id} prix">${building.costBase}</div>
                 <img class="Bonus${building.id}" src="./assets/${building.asset}">
@@ -72,7 +66,6 @@ function spawnBuilding(building) {
     affichageMain(profile.buildings[building.id-1], building);
 }
 
-/// TODO : Check si c'est toujours utile
 function buildingDelegate(building) {
   let panel = document.querySelector(`.building${building.id}`);
 
@@ -89,10 +82,9 @@ function buildingClick(building) {
   {
     profile.buildings[building.id - 1]++
     profile.spendCats(cost);
-}
+  }
 
-refreshNextCost(building);
-
+  refreshNextCost(building);
 }
 
 function refreshNextCost(building){
@@ -107,18 +99,6 @@ function changeHeadlines(){
 
   headlineTitle.innerHTML = headline.title;
   headlineContent.innerHTML = headline.content;
-}
-
-// TODO : mettre ça dans Data ?
-function getTotalCatsPerSecond(){
-
-  let total = 0;
-
-  for (let i = 0; i < profile.buildings.length; i++) {
-    total += buildingsData[i].catPerSecond * profile.buildings[i];
-  }
-
-  return total;
 }
 
 function refreshMain(building){
@@ -141,7 +121,6 @@ function refreshScore(){
   affichageScore.textContent = `${nFormatter(profile.cats, 3)}`;
 }
 
-// TODO : Garder ?
 function gameLoop() {
     //profile.cats += getTotalCatsPerSecond();
 }
@@ -179,7 +158,12 @@ function metaLoop(){
   changeHeadlines();
 }
 
-initializeData();
-initializeNews(); // TODO : big initialize
-clicPlusUn();
-profile.loadData();
+function initialize(){
+  loadingListeners();
+  loadingGameData();
+  loadingNewsData(); 
+  profile.loadData();
+  refugeNameContainer.innerHTML = profile.name;
+}
+
+initialize();

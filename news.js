@@ -1,7 +1,7 @@
 let headlines;
 let lastHeadlineId;
 
-async function initializeNews() {
+async function loadingNewsData() {
  headlines = await getJSON('./data/headlines.json');
 }
 
