@@ -164,6 +164,12 @@ function initialize(){
   loadingNewsData(); 
   profile.loadData();
   refugeNameContainer.innerHTML = profile.name;
+
+  if (profile.name != "Player")
+  {
+    refugeName.style.display = "none";
+    buttonCheck.style.display = "none";
+  }
 }
 
 initialize();
