@@ -16,7 +16,6 @@ const headlineContent = document.querySelector(".headline-content");
 function loadingListeners(){
   refugeName.addEventListener("input", (e) => {
     pseudo = e.target.value; 
-    console.log(pseudo)
     refugeNameContainer.innerHTML = `${pseudo}`
   });
 
@@ -39,13 +38,14 @@ function loadingListeners(){
 function affichageMain (buildingLevel, buildingData) {
 
   let calcBuildingParSeconde = buildingLevel * buildingData.catPerSecond;
+
   const mainHeaderContent = document.querySelector(".main-header-content");
 
   let buildingHTML = `<div class="main-building${buildingData.id} main-building-style" style="display: none;"> 
   <div>
   Nombre de <b>${buildingData.name}</b> acheté(es) ; <span class="mainCount${buildingData.id}"> ${buildingLevel} <i class="fas fa-paw"></i></span>
     <br/>
-    <p>Ce bonus rapporte ${nFormatter(calcBuildingParSeconde, 3)} chat(s) toutes les secondes !</p>
+    Ce bonus rapporte  <span class = "cps${buildingData.id}">${nFormatter(calcBuildingParSeconde, 3)}</span> chat(s) toutes les secondes !
     </div>`;
 
     mainHeaderContent.innerHTML += buildingHTML;
@@ -80,32 +80,37 @@ function buildingClick(building) {
 
   if (cost <= profile.cats)
   {
-    profile.buildings[building.id - 1]++
+    profile.buildings[building.id - 1]++;
     profile.spendCats(cost);
   }
 
   refreshNextCost(building);
 }
 
-function refreshNextCost(building){
+function refreshNextCost(building) {
   let infosBonus = document.querySelector(`.infosbonus${building.id}`);
   let calcBuildingParSecondeNext = (profile.buildings[building.id - 1] + 1) * building.catPerSecond;
 
   infosBonus.innerHTML = `${nFormatter(calcBuildingParSecondeNext)} chat(s) / s`;
 }
 
-function changeHeadlines(){
+function changeHeadlines() {
   let headline = pickRandomHeadline(profile);
 
   headlineTitle.innerHTML = headline.title;
   headlineContent.innerHTML = headline.content;
 }
 
-function refreshMain(building){
+function refreshMain(building) {
+
+  let calcBuildingParSeconde = profile.buildings[building.id - 1] * buildingsData[building.id - 1].catPerSecond;
+
   let mainBuilding = document.querySelector(`.main-building${[building.id]}`);
   let spanCount = document.querySelector(`.mainCount${building.id}`);
+  let spanCPS = document.querySelector(`.cps${[building.id]}`);
 
-  spanCount.innerHTML = `<span class="mainCount${building.id}"> ${profile.buildings[building.id -1]} <i class="fas fa-paw"></i></span>`; // TODO : Isoler le Count dans un span ou une div pour simplifier
+  spanCPS.innerHTML = `${nFormatter(calcBuildingParSeconde, 3)}`;
+  spanCount.innerHTML = `<span class="mainCount${building.id}"> ${profile.buildings[building.id -1]} <i class="fas fa-paw"></i></span>`; // Simplifier comme au dessus
 
   if (profile.buildings[building.id -1] > 0){
     mainBuilding.style.display = "";
