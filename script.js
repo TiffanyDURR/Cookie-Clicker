@@ -6,6 +6,7 @@ const pattouneHeader = document.querySelector('.pattouneHeader > div');
 const affichageCostPattoune = document.querySelector('.costPattoune');
 const buildingsPanel = document.querySelector('.buildings-panel');
 const mainHeader = document.querySelector(".main-header");
+const cpsGeneral = document.getElementById("cpsGeneral");
 const mainHeaderContent = document.querySelector(".main-header-content");
 const refugeName = document.getElementById("refuge-name");
 const buttonCheck = document.querySelector(".button-check");
@@ -28,11 +29,9 @@ function loadingListeners(){
 
     chatACliquer1.addEventListener('click', () => {
       profile.cats++;
-      clicPlusUnImage.classList.add('clicAnimPlusUn')
-      setTimeout(function () {
-        clicPlusUnImage.classList.remove('clicAnimPlusUn')
-      }, 150)
-        })
+      clicPlusUnImage.classList.add('clicAnimPlusUn') // Erreur : clicPlusUnImage n'est pas trouvé
+      setTimeout(function () { clicPlusUnImage.classList.remove('clicAnimPlusUn')}, 150)
+     })
 }
 
 function affichageMain (buildingLevel, buildingData) {
@@ -52,7 +51,7 @@ function affichageMain (buildingLevel, buildingData) {
 }
 
 function spawnBuilding(building) {
-
+  // Simplifier tout ça, ou alors faire un générateur directement
   buildingsPanel.innerHTML += `
          <div class="building${building.id}"> 
          <div class="building-hover">${building.description}
@@ -133,7 +132,7 @@ function gameLoop() {
 function checkLoop() {
   refreshScore();
 
-  mainHeader.innerHTML = `<span>Nombre de chats par seconde</span><p>${nFormatter(getTotalCatsPerSecond(),1)}</p>`; // TODO : isole aussi le CPS ?
+  cpsGeneral.innerHTML = `${nFormatter(getTotalCatsPerSecond(), 1)}`;
 
   for (let i = 0; i < buildingsData.length; i++) // TODO : Mettre tout ça dans une méthode a part
   {
