@@ -56,7 +56,7 @@ function spawnBuilding(building) {
          <div class="building${building.id}"> 
          <div class="building-hover">${building.description}
          </div>
-                <span class="titre-bonus">${building.name} (${profile.buildings[building.id - 1]})</span> 
+                <span class="titre-bonus">${building.name} <span id = titleCount${building.id}>(${profile.buildings[building.id - 1]})</span></span> 
                 <div class="infosbonus${building.id} infosbonus"></div>
                 <div class="buildingPrix${building.id} prix">${building.costBase}</div>
                 <img class="Bonus${building.id}" src="./assets/${building.asset}">
@@ -88,9 +88,11 @@ function buildingClick(building) {
 
 function refreshNextCost(building) {
   let infosBonus = document.querySelector(`.infosbonus${building.id}`);
+  let titleBonus = document.getElementById(`titleCount${building.id}`);
   let calcBuildingParSecondeNext = (profile.buildings[building.id - 1] + 1) * building.catPerSecond;
 
   infosBonus.innerHTML = `${nFormatter(calcBuildingParSecondeNext)} chat(s) / s`;
+  titleBonus.innerHTML = `(${profile.buildings[building.id - 1]})`;
 }
 
 function changeHeadlines() {
