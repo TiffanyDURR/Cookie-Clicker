@@ -56,7 +56,7 @@ function spawnBuilding(building) {
          <div class="building${building.id}"> 
          <div class="building-hover">${building.description}
          </div>
-                <span class="titre-bonus">${building.name} (x)</span>
+                <span class="titre-bonus">${building.name} (${profile.buildings[building.id - 1]})</span> 
                 <div class="infosbonus${building.id} infosbonus"></div>
                 <div class="buildingPrix${building.id} prix">${building.costBase}</div>
                 <img class="Bonus${building.id}" src="./assets/${building.asset}">
