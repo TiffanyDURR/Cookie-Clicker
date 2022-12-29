@@ -28,6 +28,8 @@ h1 {
     text-shadow: rgba(255, 255, 255, 0.4) 5px 5px, rgba(145, 63, 99, 0.3) 10px 10px, rgba(145, 63, 99, 0.2) 15px 15px, rgba(145, 63, 99, 0.1) 20px 20px, rgba(145, 63, 99, 0.05) 25px 25px;
 }
 
+canvas { border: 1px solid gray; }
+
 .app {
     width: 1400px;
     padding-top: 60px;

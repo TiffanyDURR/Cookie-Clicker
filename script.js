@@ -25,44 +25,19 @@ function loadingListeners(){
     buttonCheck.style.display = "none";
     profile.name = pseudo;
     profile.saveData();
-  })
-
-    chatACliquer1.addEventListener('click', () => {
-      profile.cats++;
-      clicPlusUnImage.classList.add('clicAnimPlusUn') // Erreur : clicPlusUnImage n'est pas trouvé
-      setTimeout(function () { clicPlusUnImage.classList.remove('clicAnimPlusUn')}, 150)
-     })
+  });
 }
 
 function affichageMain (buildingLevel, buildingData) {
-
   let calcBuildingParSeconde = buildingLevel * buildingData.catPerSecond;
-
-  const mainHeaderContent = document.querySelector(".main-header-content");
-
-  let buildingHTML = `<div class="main-building${buildingData.id} main-building-style" style="display: none;"> 
-  <div>
-  Nombre de <b>${buildingData.name}</b> acheté(es) ; <span class="mainCount${buildingData.id}"> ${buildingLevel} <i class="fas fa-paw"></i></span>
-    <br/>
-    Ce bonus rapporte  <span class = "cps${buildingData.id}">${nFormatter(calcBuildingParSeconde, 3)}</span> chat(s) toutes les secondes !
-    </div>`;
-
-    mainHeaderContent.innerHTML += buildingHTML;
+  let buildingHTML = createMainBuildingTemplate(buildingData, buildingLevel, calcBuildingParSeconde)
+  
+  mainHeaderContent.innerHTML += buildingHTML;
 }
 
 function spawnBuilding(building) {
-  // Simplifier tout ça, ou alors faire un générateur directement
-  buildingsPanel.innerHTML += `
-         <div class="building${building.id}"> 
-         <div class="building-hover">${building.description}
-         </div>
-                <span class="titre-bonus">${building.name} <span id = titleCount${building.id}>(${profile.buildings[building.id - 1]})</span></span> 
-                <div class="infosbonus${building.id} infosbonus"></div>
-                <div class="buildingPrix${building.id} prix">${building.costBase}</div>
-                <img class="Bonus${building.id}" src="./assets/${building.asset}">
-            </div>
-        `      
-    affichageMain(profile.buildings[building.id-1], building);
+  buildingsPanel.innerHTML += createBuildingTemplate(building); 
+  affichageMain(profile.buildings[building.id-1], building);
 }
 
 function buildingDelegate(building) {
@@ -77,8 +52,7 @@ function buildingClick(building) {
   let cost = getBuildingCost(building.id - 1);
   cost = Math.ceil(cost);
 
-  if (cost <= profile.cats)
-  {
+  if (cost <= profile.cats) {
     profile.buildings[building.id - 1]++;
     profile.spendCats(cost);
   }
@@ -103,23 +77,20 @@ function changeHeadlines() {
 }
 
 function refreshMain(building) {
-
   let calcBuildingParSeconde = profile.buildings[building.id - 1] * buildingsData[building.id - 1].catPerSecond;
-
-  let mainBuilding = document.querySelector(`.main-building${[building.id]}`);
-  let spanCount = document.querySelector(`.mainCount${building.id}`);
-  let spanCPS = document.querySelector(`.cps${[building.id]}`);
+  let mainBuilding = document.getElementById(`main-building${building.id}`);
+  let spanCount = document.getElementById(`mainCount${building.id}`);
+  let spanCPS = document.querySelector(`.cps${building.id}`);
 
   spanCPS.innerHTML = `${nFormatter(calcBuildingParSeconde, 3)}`;
-  spanCount.innerHTML = `<span class="mainCount${building.id}"> ${profile.buildings[building.id -1]} <i class="fas fa-paw"></i></span>`; // Simplifier comme au dessus
+  spanCount.innerHTML = `${profile.buildings[building.id -1]}`;
 
-  if (profile.buildings[building.id -1] > 0){
+  if (profile.buildings[building.id -1] > 0) {
     mainBuilding.style.display = "";
   }
 }
 
-function refreshScore(){
-
+function refreshScore() {
   let catPerLoop = getTotalCatsPerSecond() / 100;
 
   profile.cats += catPerLoop;
@@ -127,18 +98,10 @@ function refreshScore(){
   affichageScore.textContent = `${nFormatter(profile.cats, 3)}`;
 }
 
-function gameLoop() {
-    //profile.cats += getTotalCatsPerSecond();
-}
-
-function checkLoop() {
-  refreshScore();
-
-  cpsGeneral.innerHTML = `${nFormatter(getTotalCatsPerSecond(), 1)}`;
-
-  for (let i = 0; i < buildingsData.length; i++) // TODO : Mettre tout ça dans une méthode a part
+function refreshBuildings() {
+  for (let i = 0; i < buildingsData.length; i++)
   {
-    let costArrondi = getBuildingCost(i) * 1.15; // TODO : Appeller directement la méthode qu'il faut
+    let costArrondi = getBuildingCost(i) * 1.15;
 
     costArrondi = Math.ceil(costArrondi);
     
@@ -159,20 +122,30 @@ function checkLoop() {
   }
 }
 
-function metaLoop(){
+function gameLoop() {
+    //profile.cats += getTotalCatsPerSecond();
+}
+
+function checkLoop() {
+  refreshScore();
+  refreshBuildings();
+
+  cpsGeneral.innerHTML = `${nFormatter(getTotalCatsPerSecond(), 1)}`;
+}
+
+function metaLoop() {
   profile.saveData();
   changeHeadlines();
 }
 
-function initialize(){
+function initialize() {
   loadingListeners();
   loadingGameData();
   loadingNewsData(); 
   profile.loadData();
   refugeNameContainer.innerHTML = profile.name;
 
-  if (profile.name != "Player")
-  {
+  if (profile.name != "Player") {
     refugeName.style.display = "none";
     buttonCheck.style.display = "none";
   }
