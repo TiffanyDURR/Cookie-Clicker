@@ -1,4 +1,4 @@
-let profile = new Profile('Player', 10000);
+let profile = new Profile('Player', 0);
 const affichageScore = document.querySelector('.affichageScore');
 const chatACliquer1 = document.querySelector('.chatACliquer1');
 const clicPlusUnImage = document.querySelector('.clicPlusUnImage');
